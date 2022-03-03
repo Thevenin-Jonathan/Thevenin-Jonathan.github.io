@@ -1,0 +1,556 @@
+.principal-container {
+    font-family: "Oxygen", sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+
+.main-header {
+    color: white;
+    flex-shrink: 1;
+    padding: 17px 0px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    max-width: 940px;
+}
+
+.main-header__title {
+    font-family: "Lora", serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+}
+
+.main-header__nav {
+    font-family: "Oxygen", sans-serif;
+}
+
+.main-header__nav-list {
+    display: flex;
+}
+
+.main-header__nav-list-element {
+    padding: 10px 20px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    position: relative;
+    bottom: 0;
+    opacity: 0.7;
+    transition: all 200ms ease 0s;
+}
+
+.main-header__nav-list-element:hover {
+    bottom: 3px;
+    opacity: 1;
+}
+
+.main-header__nav-list-element--active {
+    opacity: 1;
+}
+
+/* MAIN */
+.main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+/* Intro */
+.main__intro {
+    height: 500px;
+    background-image: linear-gradient(142deg,
+            rgba(0, 0, 0, 0.7066176812521884) 0%,
+            rgba(121, 121, 121, 0.03995101458552175) 100%),
+        url(./../images/canyon.jpg);
+    background-position: center, 50% 50%;
+    background-size: cover;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 170px;
+    color: white;
+}
+
+.main__intro-title {
+    font-family: "lora", serif;
+    font-weight: normal;
+    font-size: 3.2rem;
+    letter-spacing: 3px;
+}
+
+.main__intro-subtitle {
+    font-weight: 100;
+}
+
+.main__intro-button {
+    font-weight: 100;
+    background-color: #dd783f;
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: white;
+}
+
+.main__intro-button:hover {
+    background-color: #f17228;
+}
+
+/* Category-nav */
+
+.main__category-nav {
+    border-bottom: #f0f0f0 1px solid;
+    flex-shrink: 1;
+}
+
+.main__category-nav-list {
+    max-width: 940px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main__category-nav-list-link-element {
+    color: #768088;
+    font-family: "Lora", serif;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 140px;
+    margin: 8px 0px;
+    padding: 13px 0;
+    border-radius: 4px;
+    background-color: white;
+    transition: all 300ms ease 0;
+}
+
+.main__category-nav-list-link-element:hover {
+    background-color: #f0f0f0;
+}
+
+/* main-content */
+.main__content {
+    flex-grow: 1;
+    background-color: #f7f7f7;
+}
+
+.main__features-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main__features-content-title,
+.main__recent-content-title {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 60px 15px 15px 15px;
+    margin-bottom: 25px;
+    color: #2e2e2e;
+}
+
+.main__features-content-posts-container {
+    display: flex;
+}
+
+.main__features-content-posts-container-link-post-1 {
+    background-image: linear-gradient(180deg,
+            rgba(82, 82, 82, 0.10157566444546573) 0%,
+            rgba(0, 0, 0, 0.5553571770505077) 100%),
+        url(./../images/ciel-nuit.jpg);
+}
+
+.main__features-content-posts-container-link-post-2 {
+    background-image: linear-gradient(180deg,
+            rgba(82, 82, 82, 0.10157566444546573) 0%,
+            rgba(0, 0, 0, 0.5553571770505077) 100%),
+        url(./../images/lanternes-celeste.jpg);
+}
+
+.main__features-content-posts-container-link-post-1,
+.main__features-content-posts-container-link-post-2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-size: 100%;
+    background-position: center, 50% 50%;
+    width: 450px;
+    height: 260px;
+    padding: 20px;
+    margin: 0px 10px;
+    border-radius: 5px;
+    bottom: 0px;
+    transition: all 300ms ease 0s;
+}
+
+.main__features-content-posts-container-link-post-1:hover,
+.main__features-content-posts-container-link-post-2:hover {
+    bottom: 5px;
+    background-size: 120%;
+}
+
+.main__features-content-posts-container-link-post-1-category,
+.main__features-content-posts-container-link-post-2-category {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    max-width: min-content;
+    border-radius: 2px;
+    padding: 3px 8px;
+    margin-bottom: 80px;
+}
+
+.main__features-content-posts-container-link-post-1-category {
+    background-color: #a872b7;
+}
+
+.main__features-content-posts-container-link-post-2-category {
+    background-color: #dd783f;
+}
+
+.main__features-content-posts-container-link-post-1-title,
+.main__features-content-posts-container-link-post-2-title {
+    text-transform: capitalize;
+    font-family: "Lora", serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.main__features-content-posts-container-link-post-1-description,
+.main__features-content-posts-container-link-post-2-description {
+    font-size: 0.9rem;
+    color: #ffffffb3;
+    margin-bottom: 20px;
+}
+
+.main__features-content-posts-container-link-post-1-footer,
+.main__features-content-posts-container-link-post-2-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #ffffffb3;
+}
+
+.main__features-content-posts-container-link-post-1-footer-container,
+.main__features-content-posts-container-link-post-2-footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.main__features-content-posts-container-link-post-1-footer-container-image,
+.main__features-content-posts-container-link-post-2-footer-container-image {
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+.main__features-content-posts-container-link-post-1-footer-container-author,
+.main__features-content-posts-container-link-post-2-footer-container-author {
+    text-transform: capitalize;
+}
+
+.main__recent-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.main__recent-content-posts-container {
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* most recents background images */
+.main__recent-content-posts-container-link-post-1 {
+    background-image: url(./../images/montgolfieres.jpg);
+}
+
+.main__recent-content-posts-container-link-post-2 {
+    background-image: url(./../images/san-fransisco-bridge.jpg);
+}
+
+.main__recent-content-posts-container-link-post-3 {
+    background-image: url(./../images/lac-aurore.jpg);
+}
+
+.main__recent-content-posts-container-link-post-4 {
+    background-image: url(./../images/vagues.jpg);
+}
+
+.main__recent-content-posts-container-link-post-5 {
+    background-image: url(./../images/telesiege-brouillard.jpg);
+}
+
+.main__recent-content-posts-container-link-post-6 {
+    background-image: url(./../images/cascades.jpg);
+}
+
+.main__recent-content-posts-container-link-post-1,
+.main__recent-content-posts-container-link-post-2,
+.main__recent-content-posts-container-link-post-3,
+.main__recent-content-posts-container-link-post-4,
+.main__recent-content-posts-container-link-post-5,
+.main__recent-content-posts-container-link-post-6 {
+    width: 292px;
+    height: 320px;
+    margin: 0 10px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #dfdfdf;
+    border-radius: 4px;
+    background-size: 100% 50%;
+    background-position: top, 50% 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    bottom: 0px;
+    box-shadow: 0 0 0 0 white;
+    transition: all 200ms ease 0ms;
+}
+
+.main__recent-content-posts-container-link-post-1:hover,
+.main__recent-content-posts-container-link-post-2:hover,
+.main__recent-content-posts-container-link-post-3:hover,
+.main__recent-content-posts-container-link-post-4:hover,
+.main__recent-content-posts-container-link-post-5:hover,
+.main__recent-content-posts-container-link-post-6:hover {
+    bottom: 5px;
+    background-size: 110% 55%;
+    box-shadow: 0px 0px 19px 2px rgba(0, 0, 0, 0.1);
+}
+
+.main__recent-content-posts-container-link-post-1-category,
+.main__recent-content-posts-container-link-post-2-category,
+.main__recent-content-posts-container-link-post-3-category,
+.main__recent-content-posts-container-link-post-4-category,
+.main__recent-content-posts-container-link-post-5-category,
+.main__recent-content-posts-container-link-post-6-category {
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+    max-width: min-content;
+    border-radius: 2px;
+    padding: 2px 6px;
+    margin: 10px 0 0 10px;
+}
+
+/* most recents category background colors */
+.main__recent-content-posts-container-link-post-1-category {
+    background-color: #E6C728;
+}
+
+.main__recent-content-posts-container-link-post-2-category {
+    background-color: #A872B7;
+}
+
+.main__recent-content-posts-container-link-post-3-category {
+    background-color: #4AAEC2;
+}
+
+.main__recent-content-posts-container-link-post-4-category {
+    background-color: #D25F7C;
+}
+
+.main__recent-content-posts-container-link-post-5-category {
+    background-color: #D25F7C;
+}
+
+.main__recent-content-posts-container-link-post-6-category {
+    background-color: #49AE5C;
+}
+
+.main__recent-content-posts-container-link-post-1-container,
+.main__recent-content-posts-container-link-post-2-container,
+.main__recent-content-posts-container-link-post-3-container,
+.main__recent-content-posts-container-link-post-4-container,
+.main__recent-content-posts-container-link-post-5-container,
+.main__recent-content-posts-container-link-post-6-container {
+    background-color: #f7f7f7;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__recent-content-posts-container-link-post-1-container-title,
+.main__recent-content-posts-container-link-post-2-container-title,
+.main__recent-content-posts-container-link-post-3-container-title,
+.main__recent-content-posts-container-link-post-4-container-title,
+.main__recent-content-posts-container-link-post-5-container-title,
+.main__recent-content-posts-container-link-post-6-container-title {
+    color: #101315;
+    font-family: "Lora", serif;
+    text-transform: capitalize;
+    font-weight: 400;
+    margin-left: 10px;
+    background-color: #f7f7f7;
+}
+
+.main__recent-content-posts-container-link-post-1-container-description,
+.main__recent-content-posts-container-link-post-2-container-description,
+.main__recent-content-posts-container-link-post-3-container-description,
+.main__recent-content-posts-container-link-post-4-container-description,
+.main__recent-content-posts-container-link-post-5-container-description,
+.main__recent-content-posts-container-link-post-6-container-description {
+    color: #7A7A7A;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.main__recent-content-posts-container-link-post-1-container-footer,
+.main__recent-content-posts-container-link-post-2-container-footer,
+.main__recent-content-posts-container-link-post-3-container-footer,
+.main__recent-content-posts-container-link-post-4-container-footer,
+.main__recent-content-posts-container-link-post-5-container-footer,
+.main__recent-content-posts-container-link-post-6-container-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #dfdfdf;
+    align-items: center;
+    padding: 10px;
+    margin-top: auto;
+    color: #7A7A7A;
+}
+
+.main__recent-content-posts-container-link-post-1-container-footer-container,
+.main__recent-content-posts-container-link-post-2-container-footer-container,
+.main__recent-content-posts-container-link-post-3-container-footer-container,
+.main__recent-content-posts-container-link-post-4-container-footer-container,
+.main__recent-content-posts-container-link-post-5-container-footer-container,
+.main__recent-content-posts-container-link-post-6-container-footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.main__recent-content-posts-container-link-post-1-container-footer-container-image,
+.main__recent-content-posts-container-link-post-2-container-footer-container-image,
+.main__recent-content-posts-container-link-post-3-container-footer-container-image,
+.main__recent-content-posts-container-link-post-4-container-footer-container-image,
+.main__recent-content-posts-container-link-post-5-container-footer-container-image,
+.main__recent-content-posts-container-link-post-6-container-footer-container-image {
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+.main__recent-content-posts-container-link-post-1-container-footer-container-author,
+.main__recent-content-posts-container-link-post-2-container-footer-container-author,
+.main__recent-content-posts-container-link-post-3-container-footer-container-author,
+.main__recent-content-posts-container-link-post-4-container-footer-container-author,
+.main__recent-content-posts-container-link-post-5-container-footer-container-author,
+.main__recent-content-posts-container-link-post-6-container-footer-container-author {
+    text-transform: capitalize;
+}
+
+/* footer */
+
+.main-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(./../images/village-flou.jpg);
+    background-size: cover;
+    background-position: 50% 10%;
+    background-repeat: no-repeat;
+}
+
+.main-footer__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #4d565d99;
+}
+
+.main-footer__contact-title {
+    text-transform: capitalize;
+    font-weight: 700;
+    color: #EFEFEF;
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 60px 15px 15px 15px;
+    margin-bottom: 25px;
+}
+
+.main-footer__contact-form {
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-footer__contact-form-input-email {
+    font-family: "Lora", serif;
+    font-size: 0.9rem;
+    border-radius: 3px 0 0 3px;
+    padding: 15px 10px;
+    width: 400px;
+}
+
+.main-footer__contact-form-input-email::placeholder {
+    text-align: left;
+}
+
+.main-footer__contact-form-input-submit {
+    background-color: #FFFFFF47;
+    color: #EFEFEF;
+    padding: 15px 40px;
+    border-radius: 0 3px 3px 0;
+}
+
+.main-footer__bottom-bar {
+    width: 100%;
+    background-color: #474747CC;
+}
+
+.main-footer__bottom-bar-container {
+    padding: 17px 0px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 940px;
+}
+
+.main-footer__bottom-bar-container-title {
+    font-family: "Lora", serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+}
+
+.main-footer__bottom-bar-container-nav {
+    font-family: "Oxygen", sans-serif;
+}
+
+.main-footer__bottom-bar-container-nav-list {
+    display: flex;
+}
+
+.main-footer__bottom-bar-container-nav-list-element {
+    padding: 10px 20px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    position: relative;
+    bottom: 0;
+    opacity: 0.7;
+    transition: all 200ms ease 0s;
+}
+
+.main-footer__bottom-bar-container-nav-list-element:hover {
+    opacity: 1;
+}
