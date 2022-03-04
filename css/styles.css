@@ -203,6 +203,18 @@
     background-color: var(--secondary-bg-color);
 }
 
+@media only screen and (max-width: 600px) {
+    .main__category-nav-list-element {
+        font-size: 0.9rem;
+        text-align: center;
+        min-width: 100px;
+        margin: 0 0.5rem;
+        padding: 0.8rem 1rem;
+        border-radius: 0.4rem;
+        transition: all 300ms ease 0;
+    }
+}
+
 /* main__content */
 
 .main__content {
