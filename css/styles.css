@@ -255,9 +255,17 @@
 }
 
 .main__featured-posts-container {
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+}
+
+.main__featured-post-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main__featured-post--element-1 {
@@ -276,13 +284,11 @@
 
 .main__featured-post {
     position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-size: 100%;
     background-position: center;
-    max-width: 500px;
-    min-width: 380px;
-    height: 230px;
     padding: 1.5rem;
     margin: 1rem;
     border-radius: 0.4rem;
@@ -348,6 +354,16 @@
 
 .main__featured-post-footer-author {
     text-transform: capitalize;
+}
+
+@media only screen and (max-width: 600px) {
+    .main__featured-post {
+        background-size: cover;
+    }
+
+    .main__featured-post:hover {
+        background-size: cover;
+    }
 }
 
 /* main__most-recent */
