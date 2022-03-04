@@ -158,7 +158,7 @@
 @media only screen and (max-width: 630px) {
     .main__intro {
         min-height: 180px;
-        padding-top: 15vh;
+        padding-top: 4rem;
     }
 
     .main__intro-title {
@@ -371,10 +371,11 @@
 @media only screen and (max-width: 550px) {
     .main__featured-post-link {
         margin: 1rem;
+
     }
 
     .main__featured-post-category {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 }
 
