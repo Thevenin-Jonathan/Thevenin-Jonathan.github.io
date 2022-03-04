@@ -3,7 +3,25 @@
     --main-font: "Oxygen", sans-serif;
     --secondary-font: "Lora", serif;
 
-    /* colors */
+    /* fonts colors*/
+    --main-font-color: white;
+    --secondary-font-color: #2e2e2e;
+    --third-font-color: #6d6c6cad;
+    --fourth-font-color: #ffffffb3;
+    /* backgrounds colors */
+    --main-bg-color: white;
+    --secondary-bg-color: #f7f7f7;
+    --main-footer-bg-color: #79797983;
+    --secondary-footer-bg-color: #474747a9;
+    /* borders colors */
+    --border-color: #dfdfdf;
+    /* categories colors */
+    --cat-nature-color: #E6C728;
+    --cat-photography-color: #A872B7;
+    --cat-relaxation-color: #4AAEC2;
+    --cat-vacation-color: #d25f7c;
+    --cat-travel-color: #49AE5C;
+    --cat-adventure-color: #dd783f;
 
 }
 
@@ -17,7 +35,7 @@
 /* HEADER */
 
 .main-header {
-    color: white;
+    color: var(--main-font-color);
     flex-shrink: 1;
     padding: 17px 0px;
     margin: auto;
@@ -66,35 +84,34 @@
 
 /* MAIN */
 .main {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: var(--main-font-color);
 }
 
 /* Intro */
 .main__intro {
-    height: 500px;
+    height: 25vh;
+    min-height: 240px;
+    padding-top: 5vh;
     background-image: linear-gradient(142deg,
             rgba(0, 0, 0, 0.7066176812521884) 0%,
             rgba(121, 121, 121, 0.03995101458552175) 100%),
         url(./../images/canyon.jpg);
     background-position: center, 50% 50%;
     background-size: cover;
-    flex-shrink: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 170px;
-    color: white;
 }
 
 .main__intro-title {
+    margin-top: 70px;
     font-family: var(--secondary-font);
     font-weight: normal;
     font-size: 3.2rem;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+    letter-spacing: 0.3rem;
+    margin-bottom: 0.8rem;
 }
 
 .main__intro-subtitle {
@@ -104,10 +121,10 @@
 .main__intro-button {
     font-weight: 100;
     background-color: #dd783f;
-    padding: 10px 30px;
-    border-radius: 5px;
-    margin-top: 20px;
-    color: white;
+    padding: 1rem 3rem;
+    border-radius: 0.3rem;
+    margin-top: 2rem;
+    color: var(--main-font-color);
 }
 
 .main__intro-button:hover {
@@ -117,7 +134,7 @@
 /* Category-nav */
 
 .main__category-nav {
-    border-bottom: #f0f0f0 1px solid;
+    border-bottom: var(--border-color) 1px solid;
     flex-shrink: 1;
 }
 
@@ -130,7 +147,7 @@
 }
 
 .main__category-nav-list-element {
-    color: #768088;
+    color: var(--third-font-color);
     font-family: var(--secondary-font);
     font-size: 0.9rem;
     text-align: center;
@@ -138,12 +155,11 @@
     margin: 8px 0px;
     padding: 13px 0;
     border-radius: 4px;
-    background-color: white;
     transition: all 300ms ease 0;
 }
 
 .main__category-nav-list-element:hover {
-    background-color: #f0f0f0;
+    background-color: var(--secondary-bg-color);
 }
 
 /* main titles */
@@ -154,16 +170,16 @@
     font-weight: 400;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    border-bottom: 1px solid #dfdfdf;
+    border-bottom: 1px solid var(--border-color);
     padding: 60px 15px 15px 15px;
     margin-bottom: 25px;
-    color: #2e2e2e;
+    color: var(--secondary-font-color);
 }
 
 /* main__featured */
 .main__featured {
     flex-grow: 1;
-    background-color: #f7f7f7;
+    background-color: var(--secondary-bg-color);
 }
 
 .main__featured-container {
@@ -220,12 +236,12 @@
     margin-bottom: 140px;
 }
 
-.main__featured-post-category--element-1 {
-    background-color: #a872b7;
+.main__featured-post-category--photography {
+    background-color: var(--cat-photography-color);
 }
 
-.main__featured-post-category--element-2 {
-    background-color: #dd783f;
+.main__featured-post-category--adventure {
+    background-color: var(--cat-adventure-color);
 }
 
 .main__featured-post-title {
@@ -238,7 +254,7 @@
 
 .main__featured-post-description {
     font-size: 0.9rem;
-    color: #ffffffb3;
+    color: var(--fourth-font-color);
     margin-bottom: 20px;
 }
 
@@ -247,7 +263,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.8rem;
-    color: #ffffffb3;
+    color: var(--fourth-font-color);
 }
 
 .main__featured-post-footer-container {
@@ -313,7 +329,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #dfdfdf;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     background-size: 100% 50%;
     background-position: top, 50% 50%;
@@ -343,55 +359,55 @@
 
 /* most recents category background colors */
 .main__most-recent-post-category--nature {
-    background-color: #E6C728;
+    background-color: var(--cat-nature-color);
 }
 
 .main__most-recent-post-category--photography {
-    background-color: #A872B7;
+    background-color: var(--cat-photography-color);
 }
 
 .main__most-recent-post-category--relaxation {
-    background-color: #4AAEC2;
+    background-color: var(--cat-relaxation-color);
 }
 
 .main__most-recent-post-category--vacation {
-    background-color: #D25F7C;
+    background-color: var(--cat-vacation-color);
 }
 
 .main__most-recent-post-category--travel {
-    background-color: #49AE5C;
+    background-color: var(--cat-travel-color);
 }
 
 .main__most-recent-post-container {
-    background-color: #f7f7f7;
     height: 50%;
     display: flex;
     flex-wrap: wrap;
+    background-color: var(--main-bg-color);
 }
 
 .main__most-recent-post-title {
-    color: #101315;
+    color: var(--secondary-font-color);
     font-family: var(--secondary-font);
     text-transform: capitalize;
     font-weight: 400;
     padding: 15px;
-    background-color: #f7f7f7;
 }
 
 .main__most-recent-post-description {
-    color: #7A7A7A;
+    color: var(--third-font-color);
     font-size: 0.9rem;
     padding: 5px 15px;
 }
 
 .main__most-recent-post-footer {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #dfdfdf;
+    border-top: 1px solid var(--border-color);
     align-items: center;
     padding: 10px;
     margin-top: auto;
-    color: #7A7A7A;
+    color: var(--third-font-color);
 }
 
 .main__most-recent-post-footer-container {
@@ -426,17 +442,17 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: #4d565d99;
+    background-color: var(--main-footer-bg-color);
 }
 
 .footer__contact-title {
     text-transform: capitalize;
     font-weight: 700;
-    color: #EFEFEF;
+    color: var(--fourth-font-color);
     text-align: center;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    border-bottom: 1px solid #dfdfdf;
+    border-bottom: 1px solid var(--border-color);
     padding: 60px 15px 15px 15px;
     margin-bottom: 25px;
 }
@@ -450,7 +466,7 @@
 
 .footer__contact-form-input-email {
     font-family: var(--secondary-font);
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-radius: 3px 0 0 3px;
     padding: 15px 10px;
     width: 400px;
@@ -461,15 +477,21 @@
 }
 
 .footer__contact-form-input-submit {
-    background-color: #FFFFFF47;
-    color: #EFEFEF;
+    background-color: var(--third-font-color);
+    font-family: var(--main-font);
+    font-size: 1rem;
+    color: var(--main-font-color);
     padding: 15px 40px;
     border-radius: 0 3px 3px 0;
 }
 
+.footer__contact-form-input-submit:hover {
+    cursor: pointer;
+}
+
 .footer__bottom-bar {
     width: 100%;
-    background-color: #474747CC;
+    background-color: var(--secondary-footer-bg-color);
 }
 
 .footer__bottom-bar-container {
