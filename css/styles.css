@@ -397,38 +397,36 @@
 }
 
 /* most recents background images */
-.main__most-recent-post--element-1 {
+.main__most-recent-post-link--element-1 {
     background-image: url(./../images/montgolfieres.jpg);
 }
 
-.main__most-recent-post--element-2 {
+.main__most-recent-post-link--element-2 {
     background-image: url(./../images/san-fransisco-bridge.jpg);
 }
 
-.main__most-recent-post--element-3 {
+.main__most-recent-post-link--element-3 {
     background-image: url(./../images/lac-aurore.jpg);
 }
 
-.main__most-recent-post--element-4 {
+.main__most-recent-post-link--element-4 {
     background-image: url(./../images/vagues.jpg);
 }
 
-.main__most-recent-post--element-5 {
+.main__most-recent-post-link--element-5 {
     background-image: url(./../images/telesiege-brouillard.jpg);
 }
 
-.main__most-recent-post--element-6 {
+.main__most-recent-post-link--element-6 {
     background-image: url(./../images/cascades.jpg);
 }
 
-.main__most-recent-post {
+.main__most-recent-post-link {
     min-width: 300px;
     width: 30%;
     height: 320px;
     margin: 0 10px 20px 10px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background-size: 100% 50%;
@@ -440,10 +438,17 @@
     transition: all 200ms ease 0ms;
 }
 
-.main__most-recent-post:hover {
+.main__most-recent-post-link:hover {
     bottom: 5px;
     background-size: 110% 55%;
     box-shadow: 0px 0px 19px 2px rgba(0, 0, 0, 0.1);
+}
+
+.main__most-recent-post {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .main__most-recent-post-category {
@@ -479,6 +484,7 @@
 }
 
 .main__most-recent-post-container {
+    width: 100%;
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -529,7 +535,7 @@
         margin-bottom: 1.2rem;
     }
 
-    .main__most-recent-post {
+    .main__most-recent-post-link {
         width: 100%;
         margin: 1rem;
     }
