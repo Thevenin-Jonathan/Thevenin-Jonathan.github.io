@@ -27,6 +27,7 @@
 
 .principal-container {
     font-family: var(--main-font);
+    width: 100vw;
     height: 100vh;
     min-width: 320px;
     display: flex;
@@ -375,7 +376,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 3rem;
 }
 
 .main__most-recent-posts-container {
@@ -516,6 +517,10 @@
 }
 
 @media only screen and (max-width: 630px) {
+    .main__most-recent {
+        margin-bottom: 1.2rem;
+    }
+
     .main__most-recent-post {
         width: 100%;
         margin: 1rem;
@@ -525,6 +530,7 @@
 /* footer */
 
 .footer {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -535,6 +541,7 @@
 }
 
 .footer__contact {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -548,14 +555,15 @@
     color: var(--fourth-font-color);
     text-align: center;
     font-size: 1.3rem;
-    letter-spacing: 2px;
+    letter-spacing: 0.08rem;
     border-bottom: 1px solid var(--border-color);
-    padding: 60px 15px 15px 15px;
-    margin-bottom: 25px;
+    padding: 4rem 1rem 1rem 1rem;
+    margin-bottom: 1.4rem;
 }
 
 .footer__contact-form {
-    margin-bottom: 100px;
+    width: 100%;
+    margin-bottom: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -564,9 +572,10 @@
 .footer__contact-form-input-email {
     font-family: var(--secondary-font);
     font-size: 1rem;
-    border-radius: 3px 0 0 3px;
-    padding: 15px 10px;
-    width: 400px;
+    border-radius: 0.2rem 0 0 0.2rem;
+    padding: 1rem 0.7rem;
+    width: 100%;
+    max-width: 400px;
 }
 
 .footer__contact-form-input-email::placeholder {
@@ -578,12 +587,36 @@
     font-family: var(--main-font);
     font-size: 1rem;
     color: var(--main-font-color);
-    padding: 15px 40px;
-    border-radius: 0 3px 3px 0;
+    padding: 1rem 2rem;
+    border-radius: 0 0.2rem 0.2rem 0;
 }
 
 .footer__contact-form-input-submit:hover {
     cursor: pointer;
+}
+
+
+@media only screen and (max-width: 630px) {
+    .footer__contact-title {
+        font-size: 1.3rem;
+        letter-spacing: 0.07rem;
+        padding: 1.5rem 1rem 1rem 1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .footer__contact-form-input-email {
+        padding: 0.7rem 0.7rem;
+        width: 50%;
+        max-width: none;
+    }
+
+    .footer__contact-form-input-submit {
+        padding: 0.7rem 2rem;
+    }
+
+    .footer__contact-form {
+        margin-bottom: 2rem;
+    }
 }
 
 .footer__bottom-bar {
@@ -628,3 +661,5 @@
 .footer__bottom-bar-nav-list-element:hover {
     opacity: 1;
 }
+
+@media only screen and (max-width: 630px) {}
