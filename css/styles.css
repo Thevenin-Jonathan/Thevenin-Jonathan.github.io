@@ -262,12 +262,6 @@
     flex-wrap: wrap;
 }
 
-.main__featured-post-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .main__featured-post--element-1 {
     background-image: linear-gradient(180deg,
             rgba(82, 82, 82, 0.10157566444546573) 0%,
@@ -285,6 +279,7 @@
 .main__featured-post {
     position: relative;
     width: 100%;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     background-size: 100%;
@@ -356,13 +351,10 @@
     text-transform: capitalize;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1060px) {
     .main__featured-post {
-        background-size: cover;
-    }
-
-    .main__featured-post:hover {
-        background-size: cover;
+        max-width: none;
+        margin: 1rem 1rem;
     }
 }
 
