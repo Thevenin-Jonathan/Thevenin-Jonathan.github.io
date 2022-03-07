@@ -14,7 +14,7 @@ var tryLeft = 5;
 //initialisation avec un rand de l'index pour la liste de mot
 wordIndex = randWordIndex(wordsList);
 //initialisation du mot à trouver
-wordToFind = wordsList[wordIndex];
+wordToFind = wordsList[wordIndex].toUpperCase();
 //initialisation du mot en cours de reflexion de l'utilisateur
 currentWord = initCurrentWord(wordToFind);
 
@@ -23,8 +23,9 @@ alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
 
 //Game loop -----
 //Demande à l'utilisateur une lettre
+console.log("Mot à trouver: " + wordToFind);
 currentLetter = askLetter();
-checkLetter(currentLetter);
+isLetterInWord(currentLetter);
 
 
 function randWordIndex(list){
@@ -49,19 +50,29 @@ function checkEntry(letter) {
     }
 }
 
+function addToLetterList(letter) {
+
+}
+
 function wrongEntry() {
     alert("Mauvaise entrée ! Merci de taper une lettre uniquement :)");
     askLetter();
 }
 
-function updateCurrentWord(letter){
+function isLetterInWord(letter) {
+    if (wordToFind.includes(letter)) {
+        updateCurrentWord(letter);
+    }
+}
 
+function updateCurrentWord(letter){
+    console.log("update current word");
 }
 
 function askLetter(){
     var letter = prompt("Mot à deviner: " + currentWord + " - Quel lettre voulez vous essayez? - " + tryLeft + " essais restant");
     if (checkEntry(letter)) {
-        return letter;
+        return letter.toUpperCase();
     } else {
         return wrongEntry();
     }
