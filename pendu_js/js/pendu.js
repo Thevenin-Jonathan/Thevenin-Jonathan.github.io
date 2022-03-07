@@ -9,26 +9,36 @@ var wordToFind = "";
 var foundLetterList = [];
 var currentWord = "";
 var currentLetter = "";
-var tryLeft = 5;
+var tryLeft = 0;
 
-//initialisation avec un rand de l'index pour la liste de mot
-wordIndex = randWordIndex(wordsList);
-//initialisation du mot à trouver
-wordToFind = wordsList[wordIndex].toUpperCase();
-//initialisation du mot en cours de reflexion de l'utilisateur
-currentWord = initCurrentWord(wordToFind);
-
-//message de départ du jeu
-alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
+initiateGame();
 
 //Game loop -----
 //Demande à l'utilisateur une lettre
-while (true) {
+while (tryLeft >= 1) {
     console.log("Mot à trouver: " + wordToFind);
     currentLetter = askLetter();
     isLetterInWord(currentLetter);
 }
 
+
+
+
+
+function initiateGame() {
+    tryLeft = 5;
+    var foundLetterList = [];
+
+    alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
+
+    //initialisation avec un rand de l'index pour la liste de mot
+    wordIndex = randWordIndex(wordsList);
+    //initialisation du mot à trouver
+    wordToFind = wordsList[wordIndex].toUpperCase();
+    //initialisation du mot en cours de reflexion de l'utilisateur
+    currentWord = initCurrentWord(wordToFind);
+    return;
+}
 
 function randWordIndex(list){
     var index = Math.floor(Math.random() * list.length);
@@ -73,14 +83,15 @@ function isLetterInWord(letter) {
     }
 }
 
-function alreadyTriedLetter(letter) {
+function alreadyTriedLetter() {
     alert("Vous avez déjà éssayé cette lettre !");
 }
 
 function updateCurrentWord(letter) {
-    var indexLetterToDisplay = wordToFind.indexOf(letter);
-    while (indexLetterToDisplay > -1) { //todo boucle a faire
-        currentWord = currentWord.substring(0, indexLetterToDisplay) + letter + currentWord.substring(indexLetterToDisplay + 1, currentWord.length);
+    for (var i = 0; i < wordToFind.length - 1; i++) { 
+        if (wordToFind[i] === letter) {
+            currentWord = currentWord.substring(0, i) + letter + currentWord.substring(i + 1, currentWord.length);
+        }       
     }
 }
 
