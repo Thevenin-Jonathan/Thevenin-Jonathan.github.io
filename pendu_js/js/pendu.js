@@ -41,7 +41,6 @@ function initCurrentWord(word){
     var initWord = ".";
     for (var i = 0; i < word.length; i++) {
         initWord += "_.";
-        console.log("initWord: " + initWord);
     }
     return initWord;
 }
