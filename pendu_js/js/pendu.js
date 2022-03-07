@@ -83,8 +83,8 @@ function updateCurrentWord(letter) {
 }
 
 function wrongLetter(letter) {
-    //todo
-    console.log("wrong letter");
+    alert("Faux, cette lettre n'est pas dans le mot !")
+    tryLeft--;
 }
 
 function askLetter(){
