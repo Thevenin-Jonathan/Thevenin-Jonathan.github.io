@@ -36,9 +36,9 @@ function randWordIndex(list){
 }
 
 function initCurrentWord(word){
-    var initWord = ".";
+    var initWord = "";
     for (var i = 0; i < word.length; i++) {
-        initWord += "_.";
+        initWord += "_";
     }
     return initWord;
 }
@@ -78,8 +78,10 @@ function alreadyTriedLetter(letter) {
 }
 
 function updateCurrentWord(letter) {
-    //todo
-    console.log("update current word");
+    var indexLetterToDisplay = wordToFind.indexOf(letter);
+    while (indexLetterToDisplay > -1) { //todo boucle a faire
+        currentWord = currentWord.substring(0, indexLetterToDisplay) + letter + currentWord.substring(indexLetterToDisplay + 1, currentWord.length);
+    }
 }
 
 function wrongLetter(letter) {
