@@ -23,9 +23,11 @@ alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
 
 //Game loop -----
 //Demande à l'utilisateur une lettre
-console.log("Mot à trouver: " + wordToFind);
-currentLetter = askLetter();
-isLetterInWord(currentLetter);
+while (true) {
+    console.log("Mot à trouver: " + wordToFind);
+    currentLetter = askLetter();
+    isLetterInWord(currentLetter);
+}
 
 
 function randWordIndex(list){
@@ -51,22 +53,38 @@ function checkEntry(letter) {
 }
 
 function addToLetterList(letter) {
-
+    foundLetterList.push(letter);
 }
 
-function wrongEntry() {
+function notALetter() {
     alert("Mauvaise entrée ! Merci de taper une lettre uniquement :)");
     askLetter();
 }
 
 function isLetterInWord(letter) {
-    if (wordToFind.includes(letter)) {
-        updateCurrentWord(letter);
+    if (foundLetterList.includes(letter)) {
+        return alreadyTriedLetter();
+    }
+    else if (wordToFind.includes(letter)) {
+        addToLetterList(letter);
+        return updateCurrentWord(letter);
+    } else {
+        return wrongLetter(letter);
     }
 }
 
-function updateCurrentWord(letter){
+function alreadyTriedLetter(letter) {
+    alert("Vous avez déjà éssayé cette lettre !");
+}
+
+function updateCurrentWord(letter) {
+    //todo
     console.log("update current word");
+}
+
+function wrongLetter(letter) {
+    //todo
+    console.log("wrong letter");
 }
 
 function askLetter(){
@@ -74,6 +92,6 @@ function askLetter(){
     if (checkEntry(letter)) {
         return letter.toUpperCase();
     } else {
-        return wrongEntry();
+        return notALetter();
     }
 }
