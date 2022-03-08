@@ -112,7 +112,7 @@ function initCurrentWord(word){
 //Vérifie si l'utilisateur tape bien une seule lettre et rien d'autre
 function checkEntry(letter) {
     //Vérifie qu'il y est qu'un seul caractere dans la string
-    if (letter.length === 1) {
+    if (letter && letter.length === 1) {
         //Declare un variable et l'initialise avec le caractere contenu dans letter
         var char = letter.charAt(0);
         //Renvoie true si char contient uniquement des lettre min ou maj. Test avec un regex
@@ -121,8 +121,8 @@ function checkEntry(letter) {
 }
 
 //Ajoute une lettre dans un array
-function addToLetterList(letter) {
-    foundLetterList.push(letter);
+function addToTriedLetterList(letter) {
+    triedLetterList.push(letter);
 }
 
 //Affiche à l'utilisateur qu'il à rentré autre chose qu'une lettre puis lui redemande de rentrer une nouvelle lettre
@@ -134,13 +134,15 @@ function notALetter() {
 //Verifie si la lettre est dans le mot à trouver
 function isLetterInWord(letter) {
     //Verifie si la lettre a déjà été testé par l'utilisateur
-    if (foundLetterList.includes(letter)) {
+    if (triedLetterList.includes(letter)) {
         return alreadyTriedLetter();
     }
+
+    //Si oui, ajoute la lettre à la liste de lettres déjà testées
+    addToTriedLetterList(letter);
+    
     //Verifie si la lettre est dans le mot à trouver
-    else if (wordToFind.includes(letter)) {
-        //Si oui, ajoute la lettre aux lettres déjà testé
-        addToLetterList(letter);
+    if (wordToFind.includes(letter)) {
         //Retourne la fonction qui met à jour le mot à trou
         return updateCurrentWord(letter);
     //Sinon, renvoie une fonction si l'utilisateur donne une mauvaise réponse
@@ -175,8 +177,10 @@ function wrongLetter(letter) {
 //Demande à l'utilisateur une lettre
 function askLetter(){
     var letter = prompt(`Mot à deviner: ${currentWord} - Quel lettre voulez vous essayez?
-Lettre déjà utilisées: ${foundLetterList.toString()}
+Lettre déjà utilisées: ${triedLetterList.toString()}
 ${tryLeft} essais restant !`);
+    //Supprime les espaces dans la string
+    letter = letter.trim();
     //Verifie que l'utilisateur tape bien une seule lettre et rien d'autre
     if (checkEntry(letter)) {
         //Si oui, retourne la lettre en majuscule
