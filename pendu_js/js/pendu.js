@@ -10,6 +10,7 @@ var foundLetterList = [];
 var currentWord = "";
 var currentLetter = "";
 var tryLeft;
+var maxTry;
 
 initiateGame();
 
@@ -23,6 +24,7 @@ while (tryLeft >= 1) {
     isLetterInWord(currentLetter);
 
     if (tryLeft < 1) {
+        displayLooseMessage();
         askReplay();
     }
 }
@@ -34,7 +36,8 @@ alert("Merci d'avoir jouer à mon jeu :)")
 
 
 function initiateGame() {
-    tryLeft = 5;
+    maxTry = 3;
+    tryLeft = 3;
     var foundLetterList = [];
 
     //initialisation avec un rand de l'index pour la liste de mot
@@ -46,8 +49,17 @@ function initiateGame() {
     return;
 }
 
+function displayWinMessage() {
+    var totalTry = (maxTry - tryLeft);
+    alert("Bravo, vous avez trouver en " + totalTry + " essai(s) !");
+}
+
+function displayLooseMessage() {
+    alert("Vous avez perdu, désolé ! Le mot à trouver était: " + wordToFind + " !");
+}
+
 function askReplay() {
-    if (confirm("Vous avez perdu, désolé ! Voulez vous rejouer ?")) {
+    if (confirm("Voulez vous rejouer ?")) {
         return initiateGame();
     }
     return;
