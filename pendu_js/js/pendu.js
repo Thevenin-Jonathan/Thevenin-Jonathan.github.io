@@ -62,8 +62,7 @@ function isWordFound(word1, word2) {
 }
 
 function displayWinMessage() {
-    var totalTry = (maxTry - tryLeft);
-    alert("Bravo, vous avez trouver en " + totalTry + " essai(s) !");
+    alert("Bravo, vous avez trouvé le mot ! Bien joué !");
 }
 
 function displayLooseMessage() {
