@@ -125,8 +125,8 @@ function alreadyTriedLetter() {
 }
 
 function updateCurrentWord(letter) {
-    for (var i = 0; i < wordToFind.length - 1; i++) { 
-        if (wordToFind[i] === letter) {
+    for (var i = 0; i < wordToFind.length; i++) {
+        if (wordToFind[i] === letter) {              
             currentWord = currentWord.substring(0, i) + letter + currentWord.substring(i + 1, currentWord.length);
         }       
     }
