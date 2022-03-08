@@ -4,23 +4,31 @@
 //Game initialisation -----
 var wordsList = ['crayon', 'stylo', 'feutre', 'pointe', 'mine', 'gomme', 'dessin', 'coloriage', 'rayure', 'peinture', 'pinceau', 'couleur', 'craie', 'papier', 'feuille',
                 'cahier', 'carnet', 'carton', 'ciseaux', 'découpage', 'pliage', 'colle', 'affaire', 'casier', 'caisse', 'trousse', 'cartable', 'jouet', 'pion', 'domino']
-var wordIndex = 0;
+var wordIndex;
 var wordToFind = "";
 var foundLetterList = [];
 var currentWord = "";
 var currentLetter = "";
-var tryLeft = 0;
+var tryLeft;
 
 initiateGame();
 
+//Welcome message
+alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
+
 //Game loop -----
-//Demande à l'utilisateur une lettre
 while (tryLeft >= 1) {
     console.log("Mot à trouver: " + wordToFind);
     currentLetter = askLetter();
     isLetterInWord(currentLetter);
+
+    if (tryLeft < 1) {
+        askReplay();
+    }
 }
 
+//Goodbye message
+alert("Merci d'avoir jouer à mon jeu :)")
 
 
 
@@ -29,14 +37,19 @@ function initiateGame() {
     tryLeft = 5;
     var foundLetterList = [];
 
-    alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
-
     //initialisation avec un rand de l'index pour la liste de mot
     wordIndex = randWordIndex(wordsList);
     //initialisation du mot à trouver
     wordToFind = wordsList[wordIndex].toUpperCase();
     //initialisation du mot en cours de reflexion de l'utilisateur
     currentWord = initCurrentWord(wordToFind);
+    return;
+}
+
+function askReplay() {
+    if (confirm("Vous avez perdu, désolé ! Voulez vous rejouer ?")) {
+        return initiateGame();
+    }
     return;
 }
 
