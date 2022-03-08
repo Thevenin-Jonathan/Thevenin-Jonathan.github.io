@@ -26,6 +26,11 @@ while (tryLeft >= 1) {
     if (tryLeft < 1) {
         displayLooseMessage();
         askReplay();
+    } else {
+        if (isWordFound(currentWord, wordToFind)) {
+            displayWinMessage();
+            askReplay();
+        }
     }
 }
 
@@ -47,6 +52,13 @@ function initiateGame() {
     //initialisation du mot en cours de reflexion de l'utilisateur
     currentWord = initCurrentWord(wordToFind);
     return;
+}
+
+function isWordFound(word1, word2) {
+    if (word1 === word2) {
+        return true;
+    }
+    return false;
 }
 
 function displayWinMessage() {
@@ -79,7 +91,7 @@ function initCurrentWord(word){
 }
 
 function checkEntry(letter) {
-    if (letter.trim().length === 1) {
+    if (letter.length === 1) {        
         var char = letter.charAt(0);
         return (/[a-zA-Z]/).test(char);
     } else{        
