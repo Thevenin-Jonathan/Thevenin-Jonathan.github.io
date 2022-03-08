@@ -3,15 +3,15 @@
 
 //Game initialisation -----
 var wordsList = ['crayon', 'stylo', 'feutre', 'pointe', 'mine', 'gomme', 'dessin', 'coloriage', 'rayure', 'peinture', 'pinceau', 'couleur', 'craie', 'papier', 'feuille',
-                'cahier', 'carnet', 'carton', 'ciseaux', 'découpage', 'pliage', 'colle', 'affaire', 'casier', 'caisse', 'trousse', 'cartable', 'jouet', 'pion', 'domino']
+                'cahier', 'carnet', 'carton', 'ciseaux', 'decoupage', 'pliage', 'colle', 'affaire', 'casier', 'caisse', 'trousse', 'cartable', 'jouet', 'pion', 'domino']
 var wordIndex;
 var wordToFind = "";
-var foundLetterList = [];
 var triedLetterList = [];
 var currentWord = "";
 var currentLetter = "";
 var tryLeft;
 var maxTry;
+var play;
 
 //Fonction qui initialise les variables du jeu
 initiateGame();
@@ -21,7 +21,7 @@ alert("Bienvenue dans le jeu du pendu, vous êtes pret?");
 
 //Game loop -----
 //On boucle tant qu'on a au moisn 1 essai
-while (tryLeft >= 1) {
+while (play) {
     //On demande une lettre à l'utilisateur et on la stocke dans uen variable
     currentLetter = askLetter();
     //On vérifie que la lettre est dans le mot à trouver
@@ -34,17 +34,16 @@ while (tryLeft >= 1) {
         displayLooseMessage();
         //On lui demande si il veut rejouer
         askReplay();
-    //...Sinon
-    } else {
-        //On vérifie si toute les lettres ont été trouvé
-        //Si oui..
-        if (isWordFound(currentWord, wordToFind)) {
-            //On affiche un message de victoire
-            displayWinMessage();
-            //On lui demande si il veut rejouer
-            askReplay();
-        }
     }
+
+    //On vérifie si toute les lettres ont été trouvé
+    if (isWordFound(currentWord, wordToFind)) {
+        //On affiche un message de victoire
+        displayWinMessage();
+        //On lui demande si il veut rejouer
+        askReplay();
+    }
+    
 }
 
 //Goodbye message - FIN DU JEU
@@ -54,10 +53,10 @@ alert("Merci d'avoir jouer à mon jeu :)")
 
 //Initialise les variables du jeu
 function initiateGame() {
+    play = true;
     maxTry = 5;
     tryLeft = 5;
     //Reset des array
-    foundLetterList = [];
     triedLetterList = [];
 
     //initialisation avec un rand de l'index pour la liste de mot
@@ -88,7 +87,8 @@ function askReplay() {
     if (confirm("Voulez vous rejouer ?")) {
         return initiateGame();
     }
-    return;
+    //Sinon, on stop le jeu en passant play à false
+    play = false;
 }
 
 //Retourne un nombre aléatoire entre 0 et la taille de l'array passé en parametre
