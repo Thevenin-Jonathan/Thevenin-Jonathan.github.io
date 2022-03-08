@@ -51,14 +51,13 @@ function initiateGame() {
     wordToFind = wordsList[wordIndex].toUpperCase();
     //initialisation du mot en cours de reflexion de l'utilisateur
     currentWord = initCurrentWord(wordToFind);
-    return;
 }
 
 function isWordFound(word1, word2) {
     if (word1 === word2) {
         return true;
     }
-    return false;
+    return;
 }
 
 function displayWinMessage() {
@@ -77,8 +76,7 @@ function askReplay() {
 }
 
 function randWordIndex(list){
-    var index = Math.floor(Math.random() * list.length);
-    return index;
+    return index = Math.floor(Math.random() * list.length);
 }
 
 function initCurrentWord(word){
@@ -93,9 +91,8 @@ function checkEntry(letter) {
     if (letter.length === 1) {        
         var char = letter.charAt(0);
         return (/[a-zA-Z]/).test(char);
-    } else{        
-        return false;
     }
+    return;
 }
 
 function addToLetterList(letter) {
