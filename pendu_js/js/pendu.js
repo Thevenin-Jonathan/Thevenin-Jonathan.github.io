@@ -41,8 +41,8 @@ alert("Merci d'avoir jouer à mon jeu :)")
 
 
 function initiateGame() {
-    maxTry = 3;
-    tryLeft = 3;
+    maxTry = 5;
+    tryLeft = 5;
     var foundLetterList = [];
 
     //initialisation avec un rand de l'index pour la liste de mot
