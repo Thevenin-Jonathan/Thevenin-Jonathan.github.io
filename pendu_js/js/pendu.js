@@ -7,6 +7,7 @@ var wordsList = ['crayon', 'stylo', 'feutre', 'pointe', 'mine', 'gomme', 'dessin
 var wordIndex;
 var wordToFind = "";
 var foundLetterList = [];
+var triedLetterList = [];
 var currentWord = "";
 var currentLetter = "";
 var tryLeft;
@@ -55,8 +56,9 @@ alert("Merci d'avoir jouer à mon jeu :)")
 function initiateGame() {
     maxTry = 5;
     tryLeft = 5;
-    //Reset de l'array
+    //Reset des array
     foundLetterList = [];
+    triedLetterList = [];
 
     //initialisation avec un rand de l'index pour la liste de mot
     wordIndex = randWordIndex(wordsList);
@@ -172,7 +174,9 @@ function wrongLetter(letter) {
 
 //Demande à l'utilisateur une lettre
 function askLetter(){
-    var letter = prompt("Mot à deviner: " + currentWord + " - Quel lettre voulez vous essayez? - " + tryLeft + " essais restant");
+    var letter = prompt(`Mot à deviner: ${currentWord} - Quel lettre voulez vous essayez?
+Lettre déjà utilisées: ${foundLetterList.toString()}
+${tryLeft} essais restant !`);
     //Verifie que l'utilisateur tape bien une seule lettre et rien d'autre
     if (checkEntry(letter)) {
         //Si oui, retourne la lettre en majuscule
