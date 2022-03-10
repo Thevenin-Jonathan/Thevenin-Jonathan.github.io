@@ -13,19 +13,19 @@ const game = {
 /*************************************************/
 /********************GAME LOOP********************/
 /*************************************************/
-init();
+initGame();
 play();
 displayScore();
 
 /*************************************************/
 /********************FUNCTIONS********************/
 /*************************************************/
-function randNumber(min, max) {
+function generateMinMaxNumber(min, max) {
     return Math.round((Math.random() * (max - min)) + min);
 }
 
-function init() {
-    game.nbToFind = randNumber(game.min, game.max);
+function initGame() {
+    game.nbToFind = generateMinMaxNumber(game.min, game.max);
     game.tryNumber = 0;
     console.log(game.nbToFind);
 }
@@ -45,7 +45,7 @@ function play() {
         alert(`Bravo, vous avez trouvé en ${game.tryNumber} essai${s} !`)
         game.scores.push(game.tryNumber);
         if (confirm("Voulez vous rejouer ?")) {
-            init();
+            initGame();
             play();
         }
     }
