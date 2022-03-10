@@ -1,7 +1,6 @@
 /*************************************************/
 /********************VARIABLES********************/
 /*************************************************/
-
 const game = {
     nbToFind: 0,
     userNb: 0,
@@ -14,7 +13,6 @@ const game = {
 /*************************************************/
 /********************GAME LOOP********************/
 /*************************************************/
-
 init();
 play();
 displayScore();
@@ -22,7 +20,6 @@ displayScore();
 /*************************************************/
 /********************FUNCTIONS********************/
 /*************************************************/
-
 function randNumber(min, max) {
     return Math.round((Math.random() * (max - min)) + min);
 }
@@ -39,17 +36,17 @@ function play() {
     game.tryNumber++;
     if (game.userNb < game.nbToFind) {
         alert("Non, c'est plus !")
-        return play();
+        play();
     } else if (game.userNb > game.nbToFind) {
         alert("Non, c'est moins !")
-        return play();
+        play();
     } else {
         const s = game.tryNumber <= 1 ? "" : "s";
         alert(`Bravo, vous avez trouvé en ${game.tryNumber} essai${s} !`)
         game.scores.push(game.tryNumber);
         if (confirm("Voulez vous rejouer ?")) {
             init();
-            return play();
+            play();
         }
     }
 }
