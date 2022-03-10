@@ -24,10 +24,7 @@ displayScore();
 /*************************************************/
 
 function randNumber(min, max) {
-    let number = (Math.random() * (max - min)) + min;
-    number = Math.round(number);
-    console.log("nb: " + number);
-    return number;
+    return Math.round((Math.random() * (max - min)) + min);
 }
 
 function init() {
