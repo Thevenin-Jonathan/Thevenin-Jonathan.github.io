@@ -32,10 +32,7 @@ function start() {
 
 function emptyBoard(iD) {
     const boardElement = document.getElementById(iD);
-    while(boardElement.firstChild) {
-        boardElement.removeChild(boardElement.lastChild);
-    }
-
+    boardElement.innerHTML = "";
 }
 
 function generateDice(parent) {
