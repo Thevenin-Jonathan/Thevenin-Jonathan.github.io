@@ -1,8 +1,7 @@
 /*************************************************/
-/***********************LOOP**********************/
+/***********************GAME**********************/
 /*************************************************/
 initGame();
-start();
 
 /*************************************************/
 /********************FUNCTIONS********************/
@@ -13,16 +12,30 @@ function initGame() {
     divDealer.id = "dealer";
     divDealer.classList.add("board");
     divApp.appendChild(divDealer);
+    const playButton = document.getElementById("play-button");
+    playButton.addEventListener("click", start);
 }
 
 function start() {
-    let diceNumber = parseInt(prompt("Combien voulez vous lancer de dé ?"));
+    emptyBoard("dealer");
+    emptyBoard("player");
+
+    let diceNumber = 6;
+
     for (let i = 0; i < diceNumber; i++) {
         generateDice("player");
     }
     for (let i = 0; i < diceNumber; i++) {
         generateDice("dealer");
     }
+}
+
+function emptyBoard(iD) {
+    const boardElement = document.getElementById(iD);
+    while(boardElement.firstChild) {
+        boardElement.removeChild(boardElement.lastChild);
+    }
+
 }
 
 function generateDice(parent) {
@@ -42,10 +55,10 @@ function generateMinMaxNumber(min, max) {
 }
 
 function moveDiceFaceOnX(dice) {
-    let positionBgDice = generateMinMaxNumber(dice.minFace, dice.maxFace);
-    positionBgDice = ((positionBgDice * 100) - 100) * -1;
-    positionBgDice += "px";
-    dice.element.style.backgroundPositionX = positionBgDice;
+    let diceBgPosition = generateMinMaxNumber(dice.minFace, dice.maxFace);
+    diceBgPosition = ((diceBgPosition * 100) - 100) * -1;
+    diceBgPosition += "px";
+    dice.element.style.backgroundPositionX = diceBgPosition;
 }
 
 
