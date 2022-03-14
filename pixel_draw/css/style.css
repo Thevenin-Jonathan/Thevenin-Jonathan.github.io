@@ -1,0 +1,133 @@
+:root {
+    --header-bg-color: #3148AD;
+    --btn-validate-bg-color: #9B68E4;
+    --main-bg-color: linear-gradient(45deg, rgba(66, 84, 199, 1) 0%, rgba(107, 90, 206, 1) 100%);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--header-bg-color);
+}
+
+.configuration {
+    padding: 3%;
+}
+
+.input {
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    margin: 0 1px;
+    padding: 20px;
+}
+
+#grid-input {
+    border-radius: 5px 0 0 5px;
+}
+
+.btn-validate {
+    border: none;
+    outline: none;
+    margin: 0 1px;
+    padding: 20px;
+    border-radius: 0 5px 5px 0;
+    font-size: 1rem;
+    color: white;
+    background-color: var(--btn-validate-bg-color);
+    cursor: pointer;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background: var(--main-bg-color);
+}
+
+#invader {
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    line-height: 4rem;
+}
+
+.pixel {
+    background-color: rgb(170, 170, 170);
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgb(143, 143, 143);
+}
+
+.pixel-empty {
+    background-color: rgb(170, 170, 170);
+}
+
+.pixel-dark {
+    background-color: rgb(99, 99, 99);
+}
+
+.pixel-light {
+    background-color: #FBC048;
+}
+
+.pixel-highlight {
+    background-color: #79EA83;
+}
+
+.color-pallet_btn-color {
+    width: 40px;
+    height: 40px;
+    margin: 15px 0px;
+    border-radius: 30px;
+    outline: none;
+}
+
+.color-pallet_btn-color--active {
+    width: 60px;
+    height: 60px;
+}
+
+.color-pallet_btn-color--empty {
+    background-color: rgb(170, 170, 170);
+    border: 3px solid rgb(138, 138, 138);
+}
+
+.color-pallet_btn-color--dark {
+    background-color: rgb(99, 99, 99);
+    border: 3px solid rgb(66, 66, 66);
+}
+
+.color-pallet_btn-color--light {
+    background-color: #FBC048;
+    border: 3px solid #e9a41b;
+}
+
+.color-pallet_btn-color--highlight {
+    background-color: #79EA83;
+    border: 3px solid #2fc73c;
+}
+
+
+.color-pallet {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.397);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
