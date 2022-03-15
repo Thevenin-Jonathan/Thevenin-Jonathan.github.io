@@ -1,0 +1,48 @@
+.container {
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.target-cell {
+  background-color: greenyellow;
+}
+
+.player {
+  background-image: url("../img/sprite.png");
+  background-size: 68px 272px;
+  background-position: 0px -136px;
+  width: 100%;
+  height: 100%;
+}
+
+.right {
+  background-position: 0px -136px;
+}
+
+.down {
+  background-position: 0px -0px;
+}
+
+.left {
+  background-position: 0px -68px;
+}
+
+.up {
+  background-position: 0px -204px;
+}
+
+.board {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 70px;
+  height: 70px;
+  border: 1px black solid;
+}
