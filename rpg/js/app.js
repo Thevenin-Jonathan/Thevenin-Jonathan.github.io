@@ -46,8 +46,10 @@ const app = {
 
   isGameOver: () => {
     if (app.player.x === app.targetCell.x && app.player.y === app.targetCell.y) {
-      app.gameOver = true;  
-      alert(`Bien joué ! Vous avez atteind la sortie en ${app.player.moveCount} mouvement${app.player.moveCount > 1 ? "s" : ""} !`);
+      app.gameOver = true;
+      setTimeout(() => {
+        alert(`Bien joué ! Vous avez atteind la sortie en ${app.player.moveCount} mouvement${app.player.moveCount > 1 ? "s" : ""} !`);
+      }, 0);
     }
   },
 
