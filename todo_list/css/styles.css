@@ -1,0 +1,233 @@
+:root {
+    --main-font: 'Kalam', cursive;
+
+    --header-bg-color: #2998ec;
+    --main-bg-color: #74b9ff;
+    --main-font-color: white;
+    --hover-font-color: #2d3436;
+    --todo-top-bg-color: #45a5ee;
+    --todo-back-bg-color: #62b5f5;
+    --todo-bg-color: #76bff7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*********************************************/
+/*******************Header********************/
+/*********************************************/
+
+header {
+    background-color: var(--header-bg-color);
+    position: relative;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--main-font);
+    color: var(--main-font-color);
+    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.15);
+}
+
+.header_title {
+    font-size: 1.8rem;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.header_add-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header_add-container:hover>* {
+    color: var(--hover-font-color);
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+}
+
+.header_add-text {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.header_add-button {
+    height: 35px;
+    width: 35px;
+    margin: auto 10px;
+    background-image: url(../img/add-button.png);
+    background-size: contain;
+}
+
+/*********************************************/
+/*******************Main********************/
+/*********************************************/
+
+main {
+    height: 100vh;
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: var(--main-font);
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+.main_todo-list {
+    color: var(--main-font-color);
+    margin: 30px 20px 0 20px;
+    min-width: 350px;
+    max-width: 500px;
+    height: fit-content;
+    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.10);
+}
+
+.main_todo-list-top-container {
+    background-color: var(--todo-top-bg-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.main_todo-list-title {
+    padding-top: 5px;
+    margin-left: 5px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.main_todo-back {
+    background-color: var(--todo-back-bg-color);
+    padding: 10px;
+}
+
+.main_todo-container {
+    background-color: var(--todo-bg-color);
+    display: flex;
+    width: 100%;
+    min-height: 150px;
+}
+
+.main_todo-separator {
+    width: 5px;
+    background-image: url(../img/line.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.main_todo-left-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main_todo-middle-container {
+    padding: 0 10px;
+    ;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.main_todo-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40px;
+    font-size: 1.1rem;
+}
+
+.main_todo-content {
+    padding: 10px 0px;
+}
+
+.main_todo-right-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
+
+.main_todo-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.main_todo-icon--close-list {
+    background-image: url(../img/close.png);
+    background-size: contain;
+    margin-right: 5px;
+}
+
+.main_todo-icon--close-list:hover {
+    cursor: pointer;
+    background-image: url(../img/close-red.png);
+}
+
+.main_todo-icon--check {
+    background-image: url(../img/checked.png);
+    background-size: contain;
+}
+
+.main_todo-icon--check:hover {
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+}
+
+.main_todo-icon--uncheck {
+    background-image: url(../img/unchecked.png);
+    background-size: contain;
+}
+
+.main_todo-icon--uncheck:hover {
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+}
+
+.main_todo-icon--close {
+    background-image: url(../img/close.png);
+    background-size: contain;
+}
+
+.main_todo-icon--close:hover {
+    cursor: pointer;
+    background-image: url(../img/close-red.png);
+}
+
+.main_todo-icon--edit {
+    background-image: url(../img/edit.png);
+    background-size: contain;
+}
+
+.main_todo-icon--edit:hover {
+    cursor: pointer;
+    background-image: url(../img/edit-green.png);
+
+}
+
+.main_todo-icon--up {
+    background-image: url(../img/up.png);
+    background-size: contain;
+}
+
+.main_todo-icon--up:hover {
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+}
+
+.main_todo-icon--down {
+    background-image: url(../img/down.png);
+    background-size: contain;
+}
+
+.main_todo-icon--down:hover {
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+}
