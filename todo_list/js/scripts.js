@@ -3,6 +3,7 @@ const todoContainerElement = document.querySelector(".todos-container");
 
 const addTodoElement = document.querySelector(".header__add-container");
 addTodoElement.addEventListener("click", () => {
+    updTodoClassAndNumber();
     createTodo();
     reDrawTodosList();
 })
@@ -11,7 +12,8 @@ function createTodo() {
     const todo = {
         element: document.createElement("div"),
         number: todoList.length + 1,
-        tasks: []
+        tasks: [],
+        toDelete: false,
     }
     todo.element.classList.add("todo", `list-${todo.number}`);
 
@@ -19,9 +21,14 @@ function createTodo() {
     topContainerElement.classList.add("todo__top-container");
     const titleElement = document.createElement("h2");
     titleElement.classList.add("top-container__title");
-    titleElement.innerText = `Liste ${todo.number}`;
+    titleElement.innerText = `Titre de la liste`;
     const iconCloseElement = document.createElement("div");
     iconCloseElement.classList.add("todo__icon", "todo__icon--close-list");
+    iconCloseElement.addEventListener("click", (e) => {
+        todo.toDelete = true;
+        reDrawTodosList();
+        e.stopPropagation();
+    })
     const taskListElement = document.createElement("ul");
     taskListElement.classList.add("todo__task-list");
 
@@ -31,7 +38,7 @@ function createTodo() {
     todo.element.appendChild(taskListElement);
 
     todoList.push(todo);
-    insertTaskInTodo(todo.number, createTask());
+    todo.tasks.push(createTask());
 }
 
 function createTask() {
@@ -76,12 +83,23 @@ function createTask() {
     return taskElement;
 }
 
-function insertTaskInTodo(todoNb, task) {
-    todoList[todoNb-1].tasks.push(task);
+function deleteMarkedTodo() {
+    todoList.forEach((todo, index) => {
+        if (todo.toDelete) todoList.splice(index, 1);
+    });
 }
 
 function deleteHTMLList() {
     todoContainerElement.innerHTML = "";
+}
+
+function updTodoClassAndNumber() {
+    todoList.forEach((todo, index) => {
+        const newNumber = index +1;
+        todo.number = newNumber;
+        todo.element.classList = "";
+        todo.element.classList.add("todo", `list-${newNumber}`);
+    });
 }
 
 function drawTodosList() {
@@ -95,6 +113,7 @@ function drawTodosList() {
 }
 
 function reDrawTodosList() {
+    deleteMarkedTodo();
     deleteHTMLList();
     drawTodosList();
 }
