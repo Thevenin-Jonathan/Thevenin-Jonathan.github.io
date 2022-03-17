@@ -25,6 +25,12 @@ function createTodo() {
 
     topContainerElement.classList.add("todo__top-container");
     inputTitleElement.classList.add("top-container__input-title", "hidden");
+    titleElement.classList.add("top-container__title");
+    titleElement.innerText = `Title list`;
+    iconCloseElement.classList.add("todo__icon", "todo__icon--close-list");
+    taskListElement.classList.add("todo__task-list");
+
+    
     inputTitleElement.addEventListener("focusout", () => {
         titleElement.innerText = inputTitleElement.value !== "" ? inputTitleElement.value : titleElement.textContent;
         titleElement.classList.toggle("hidden");
@@ -37,8 +43,6 @@ function createTodo() {
             inputTitleElement.classList.toggle("hidden");
         }       
     })
-    titleElement.classList.add("top-container__title");
-    titleElement.innerText = `Title list`;
     titleElement.addEventListener("click", () => {
         titleElement.classList.toggle("hidden");
         inputTitleElement.classList.toggle("hidden");
@@ -46,13 +50,11 @@ function createTodo() {
         inputTitleElement.setSelectionRange(inputTitleElement.value.length, inputTitleElement.value.length);
 
     })
-    iconCloseElement.classList.add("todo__icon", "todo__icon--close-list");
     iconCloseElement.addEventListener("click", (e) => {
         todo.toDelete = true;
         reDrawTodosList();
         e.stopPropagation();
     })
-    taskListElement.classList.add("todo__task-list");
 
     topContainerElement.appendChild(inputTitleElement);
     topContainerElement.appendChild(titleElement);
@@ -61,15 +63,17 @@ function createTodo() {
     todo.element.appendChild(taskListElement);
 
     todoList.push(todo);
-    const task = {
-        element: createTask(),
-        toDelete: false
-    }
-    todo.tasks.push(task);
+    todo.tasks.push(createTask());
+    todo.tasks.push(createTask());
+    todo.tasks.push(createTask());
 }
 
 function createTask() {
-    const taskElement = document.createElement("li");
+    const task = {
+        element: document.createElement("li"),
+        toDelete: false
+    }
+
     const mainContainerElement = document.createElement("div");
     const leftContainerElement = document.createElement("div");
     const middleContainerElement = document.createElement("div");
@@ -82,7 +86,7 @@ function createTask() {
     const iconCloseElement = document.createElement("div");
     const separatorElement = document.createElement("div");
 
-    taskElement.classList.add("list__task");
+    task.element.classList.add("task");
     mainContainerElement.classList.add("task__main-container");
     leftContainerElement.classList.add("task__left-container");
     middleContainerElement.classList.add("task__middle-container");
@@ -95,7 +99,13 @@ function createTask() {
     iconCloseElement.classList.add("todo__icon", "todo__icon--close");
     separatorElement.classList.add("task__separator");
 
-    taskElement.appendChild(mainContainerElement);
+    iconCloseElement.addEventListener("click", (e) => {
+        task.toDelete = true;
+        reDrawTodosList();
+        e.stopPropagation();
+    })
+
+    task.element.appendChild(mainContainerElement);
     mainContainerElement.appendChild(leftContainerElement);
     mainContainerElement.appendChild(separatorElement);
     mainContainerElement.appendChild(middleContainerElement);
@@ -106,41 +116,45 @@ function createTask() {
     rightContainerElement.appendChild(iconUpElement);
     rightContainerElement.appendChild(iconDownElement);
     rightContainerElement.appendChild(iconEditElement);
-    rightContainerElement.appendChild(iconcloseElement);
+    rightContainerElement.appendChild(iconCloseElement);
 
-    return taskElement;
-}
-
-function deleteMarkedOrDeleteTodo() {
-    todoList.forEach((todo, index) => {
-        if (todo.toDelete || todo.tasks.length < 1) {
-            todoList.splice(index, 1);
-            return;
-        }
-        todo.tasks.forEach((task, index) => {            
-            if (task.toDelete) {
-                todo.tasks.splice(index, 1);
-            }
-        });
-    });
-}
-
-function deleteHTMLList() {
-    todoContainerElement.innerHTML = "";
+    return task;
 }
 
 function updTodoClassAndNumber() {
     todoList.forEach((todo, index) => {
-        const newNumber = index +1;
+        const newNumber = index + 1;
         todo.number = newNumber;
         todo.element.classList = "";
         todo.element.classList.add("todo", `list-${newNumber}`);
     });
 }
 
+function deleteMarkedOrDeleteTodo() {
+    todoList.forEach((todo, index) => {
+        if (todo.toDelete) {
+            todoList.splice(index, 1);
+            return;
+        }
+        todo.tasks.forEach((task, index) => {
+            if (task.toDelete) {
+                todo.tasks.splice(index, 1);
+                const taskListElement = document.querySelector(`.list-${todo.number} .todo__task-list`);
+                taskListElement.innerHTML = "";
+            }
+        })
+        if (todo.tasks.length < 1) todoList.splice(index, 1);
+    })
+}
+
+function deleteHTMLList() {
+    todoContainerElement.innerHTML = "";
+}
+
 function drawTodosList() {
     for (const todo of todoList) {
         todoContainerElement.appendChild(todo.element);
+        
         const taskListElement = document.querySelector(`.list-${todo.number} .todo__task-list`);
         for (const task of todo.tasks) {
             taskListElement.appendChild(task.element);
