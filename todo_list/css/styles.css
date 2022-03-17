@@ -14,6 +14,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
 /*********************************************/
 /*******************Header********************/
 /*********************************************/
@@ -95,10 +99,24 @@ body {
     height: 40px;
 }
 
+.top-container__input-title {
+    outline: none;
+    border: none;
+    background-color: var(--todo-top-bg-color);
+    color: var(--main-font-color);
+    font-family: var(--main-font);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding-top: 5px;
+    margin-left: 8px;
+    font-weight: 400;
+}
+
 .top-container__title {
     padding-top: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     font-weight: 400;
+    font-size: 1.1rem;
     text-transform: uppercase;
 }
 

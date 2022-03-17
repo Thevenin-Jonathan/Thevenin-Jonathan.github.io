@@ -18,53 +18,81 @@ function createTodo() {
     todo.element.classList.add("todo", `list-${todo.number}`);
 
     const topContainerElement = document.createElement("div");
-    topContainerElement.classList.add("todo__top-container");
+    const inputTitleElement = document.createElement("input");
     const titleElement = document.createElement("h2");
-    titleElement.classList.add("top-container__title");
-    titleElement.innerText = `Titre de la liste`;
     const iconCloseElement = document.createElement("div");
+    const taskListElement = document.createElement("ul");
+
+    topContainerElement.classList.add("todo__top-container");
+    inputTitleElement.classList.add("top-container__input-title", "hidden");
+    inputTitleElement.addEventListener("focusout", () => {
+        titleElement.innerText = inputTitleElement.value !== "" ? inputTitleElement.value : titleElement.textContent;
+        titleElement.classList.toggle("hidden");
+        inputTitleElement.classList.toggle("hidden");
+    })
+    document.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+            titleElement.innerText = inputTitleElement.value !== "" ? inputTitleElement.value : titleElement.textContent;
+            titleElement.classList.toggle("hidden");
+            inputTitleElement.classList.toggle("hidden");
+        }       
+    })
+    titleElement.classList.add("top-container__title");
+    titleElement.innerText = `Title list`;
+    titleElement.addEventListener("click", () => {
+        titleElement.classList.toggle("hidden");
+        inputTitleElement.classList.toggle("hidden");
+        inputTitleElement.focus();
+        inputTitleElement.setSelectionRange(inputTitleElement.value.length, inputTitleElement.value.length);
+
+    })
     iconCloseElement.classList.add("todo__icon", "todo__icon--close-list");
     iconCloseElement.addEventListener("click", (e) => {
         todo.toDelete = true;
         reDrawTodosList();
         e.stopPropagation();
     })
-    const taskListElement = document.createElement("ul");
     taskListElement.classList.add("todo__task-list");
 
+    topContainerElement.appendChild(inputTitleElement);
     topContainerElement.appendChild(titleElement);
     topContainerElement.appendChild(iconCloseElement);
     todo.element.appendChild(topContainerElement);
     todo.element.appendChild(taskListElement);
 
     todoList.push(todo);
-    todo.tasks.push(createTask());
+    const task = {
+        element: createTask(),
+        toDelete: false
+    }
+    todo.tasks.push(task);
 }
 
 function createTask() {
     const taskElement = document.createElement("li");
-    taskElement.classList.add("list__task");
     const mainContainerElement = document.createElement("div");
-    mainContainerElement.classList.add("task__main-container");
     const leftContainerElement = document.createElement("div");
-    leftContainerElement.classList.add("task__left-container");
     const middleContainerElement = document.createElement("div");
-    middleContainerElement.classList.add("task__middle-container");
     const rightContainerElement = document.createElement("div");
-    rightContainerElement.classList.add("task__right-container");
     const iconUncheckElement = document.createElement("div");
-    iconUncheckElement.classList.add("todo__icon", "todo__icon--uncheck");
     const contentElement = document.createElement("p");
-    contentElement.classList.add("task__content");
     const iconUpElement = document.createElement("div");
-    iconUpElement.classList.add("todo__icon", "todo__icon--up");
     const iconDownElement = document.createElement("div");
-    iconDownElement.classList.add("todo__icon", "todo__icon--down");
     const iconEditElement = document.createElement("div");
-    iconEditElement.classList.add("todo__icon", "todo__icon--edit");
-    const iconcloseElement = document.createElement("div");
-    iconcloseElement.classList.add("todo__icon", "todo__icon--close");
+    const iconCloseElement = document.createElement("div");
     const separatorElement = document.createElement("div");
+
+    taskElement.classList.add("list__task");
+    mainContainerElement.classList.add("task__main-container");
+    leftContainerElement.classList.add("task__left-container");
+    middleContainerElement.classList.add("task__middle-container");
+    rightContainerElement.classList.add("task__right-container");
+    iconUncheckElement.classList.add("todo__icon", "todo__icon--uncheck");
+    contentElement.classList.add("task__content");
+    iconUpElement.classList.add("todo__icon", "todo__icon--up");
+    iconDownElement.classList.add("todo__icon", "todo__icon--down");
+    iconEditElement.classList.add("todo__icon", "todo__icon--edit");
+    iconCloseElement.classList.add("todo__icon", "todo__icon--close");
     separatorElement.classList.add("task__separator");
 
     taskElement.appendChild(mainContainerElement);
@@ -83,9 +111,17 @@ function createTask() {
     return taskElement;
 }
 
-function deleteMarkedTodo() {
+function deleteMarkedOrDeleteTodo() {
     todoList.forEach((todo, index) => {
-        if (todo.toDelete) todoList.splice(index, 1);
+        if (todo.toDelete || todo.tasks.length < 1) {
+            todoList.splice(index, 1);
+            return;
+        }
+        todo.tasks.forEach((task, index) => {            
+            if (task.toDelete) {
+                todo.tasks.splice(index, 1);
+            }
+        });
     });
 }
 
@@ -107,13 +143,13 @@ function drawTodosList() {
         todoContainerElement.appendChild(todo.element);
         const taskListElement = document.querySelector(`.list-${todo.number} .todo__task-list`);
         for (const task of todo.tasks) {
-            taskListElement.appendChild(task);
+            taskListElement.appendChild(task.element);
         }
     }
 }
 
 function reDrawTodosList() {
-    deleteMarkedTodo();
+    deleteMarkedOrDeleteTodo();
     deleteHTMLList();
     drawTodosList();
 }
