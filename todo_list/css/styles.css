@@ -120,6 +120,10 @@ body {
     text-transform: uppercase;
 }
 
+.icon-container {
+    display: flex;
+}
+
 .todo__task-list {
     background-color: var(--todo-back-bg-color);
     padding: 10px;
@@ -128,6 +132,7 @@ body {
 .task__main-container {
     background-color: var(--todo-bg-color);
     display: flex;
+    margin: 10px 0;
     width: 100%;
 }
 
@@ -172,6 +177,17 @@ body {
 .todo__icon {
     width: 25px;
     height: 25px;
+}
+
+.todo__icon--edit-list {
+    background-image: url(../img/edit.png);
+    background-size: contain;
+    margin-right: 5px;
+}
+
+.todo__icon--edit-list:hover {
+    cursor: pointer;
+    background-image: url(../img/edit-green.png);
 }
 
 .todo__icon--close-list {

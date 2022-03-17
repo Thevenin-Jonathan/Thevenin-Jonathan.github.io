@@ -20,6 +20,8 @@ function createTodo() {
     const topContainerElement = document.createElement("div");
     const inputTitleElement = document.createElement("input");
     const titleElement = document.createElement("h2");
+    const iconContainerElement = document.createElement("div");
+    const iconEditElement = document.createElement("div");
     const iconCloseElement = document.createElement("div");
     const taskListElement = document.createElement("ul");
 
@@ -27,6 +29,8 @@ function createTodo() {
     inputTitleElement.classList.add("top-container__input-title", "hidden");
     titleElement.classList.add("top-container__title");
     titleElement.innerText = `Title list`;
+    iconContainerElement.classList.add("icon-container");
+    iconEditElement.classList.add("todo__icon", "todo__icon--edit-list");
     iconCloseElement.classList.add("todo__icon", "todo__icon--close-list");
     taskListElement.classList.add("todo__task-list");
 
@@ -43,7 +47,7 @@ function createTodo() {
             inputTitleElement.classList.toggle("hidden");
         }       
     })
-    titleElement.addEventListener("click", () => {
+    iconEditElement.addEventListener("click", () => {
         titleElement.classList.toggle("hidden");
         inputTitleElement.classList.toggle("hidden");
         inputTitleElement.focus();
@@ -58,12 +62,13 @@ function createTodo() {
 
     topContainerElement.appendChild(inputTitleElement);
     topContainerElement.appendChild(titleElement);
-    topContainerElement.appendChild(iconCloseElement);
+    topContainerElement.appendChild(iconContainerElement);
+    iconContainerElement.appendChild(iconEditElement);
+    iconContainerElement.appendChild(iconCloseElement);
     todo.element.appendChild(topContainerElement);
     todo.element.appendChild(taskListElement);
 
     todoList.push(todo);
-    todo.tasks.push(createTask());
     todo.tasks.push(createTask());
     todo.tasks.push(createTask());
 }
