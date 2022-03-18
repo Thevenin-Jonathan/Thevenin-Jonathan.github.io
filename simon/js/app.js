@@ -141,7 +141,7 @@ const app = {
     app.isClickIsAvaiblé = false;
     const color = app.colors[Math.floor(Math.random() * 4)];
     app.sequence.push(color);
-    app.simonSays(app.sequence);
+    setTimeout(app.simonSays, 1000, app.sequence);
   }
 
 };
