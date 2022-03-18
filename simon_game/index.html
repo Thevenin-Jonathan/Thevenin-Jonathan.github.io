@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Simon Game</title>
+</head>
+
+<body>
+    <h1 class="title">SIMON GAME</h1>
+    <div class="menu-container">
+        <button class="menu__sound-button button" id="sound"></button>
+        <button class="menu__start-button button" id="start">START</button>
+        <button class="menu__restart-button button" id="restart"></button>
+    </div>
+    <div class="difficulty-container">
+        <button class="difficulty__easy-button button active" id="easy">Easy</button>
+        <button class="difficulty__normal-button button" id="normal">Normal</button>
+        <button class="difficulty__hard-button button" id="hard">Hard</button>
+    </div>
+    <div class="boardgame-container">
+        <div class="boardgame__message" id="message">Push START to play !</div>
+        <div class="boardgame__playground-easy hidden" id="playground-easy"></div>
+        <div class="boardgame__playground-normal" id="playground-normal"></div>
+        <div class="boardgame__playground-hard hidden" id="playground-hard"></div>
+    </div>
+    <div class="score">Score de série : 0</div>
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

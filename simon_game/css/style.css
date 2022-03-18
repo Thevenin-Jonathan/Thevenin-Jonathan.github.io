@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #138dd3;
+    --second-color: #119BEC;
+    --third-color: #24AEFF;
+    --last-color: #134969;
+
+    --main-text-color: white;
+    --red-text-color: #8f2b24;
+
+    --main-font: 'Concert One', cursive;
+    --main-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.28);
+}
+
+body {
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--second-color);
+    font-family: var(--main-font);
+    color: var(--main-text-color);
+}
+
+.title {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    text-align: center;
+    background-color: var(--main-color);
+    box-shadow: var(--main-shadow);
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 10px 10px 20px 10px;
+    gap: 10px;
+}
+
+.difficulty-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.button {
+    border: none;
+    background-color: var(--third-color);
+    color: var(--main-text-color);
+    font-family: var(--main-font);
+    font-size: 1.7rem;
+    padding: 5px 20px 10px 20px;
+    cursor: pointer;
+    box-shadow: var(--main-shadow);
+}
+
+.button:hover {
+    background-color: var(--main-color);
+}
+
+.active {
+    background-color: var(--main-color);
+}
+
+.menu__sound-button,
+.menu__restart-button {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+}
+
+.menu__sound-button {
+    background-image: url("../image/volume.png");
+    background-size: 80% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menu__restart-button {
+    background-image: url("../image/restart.png");
+    background-size: 80% 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.menu__sound-button--mute {
+    background-image: url("../image/mute.png");
+
+}
+
+.boardgame-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boardgame__message {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 20px 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: var(--main-color);
+    box-shadow: var(--main-shadow);
+}
+
+.boardgame__message--red {
+    color: var(--red-text-color);
+}
+
+.boardgame__playground-normal {
+    width: 600px;
+    height: 600px;
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    background-color: var(--second-color);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cell {
+    height: 49%;
+    width: 49%;
+    border: solid 0px var(--third-color);
+    transition: border, ease, 1s;
+}
+
+.score {
+    text-align: center;
+    font-size: 2rem;
+    padding: 40px 0;
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--main-color);
+    box-shadow: var(--main-shadow);
+}
+
+.hidden {
+    display: none;
+}
