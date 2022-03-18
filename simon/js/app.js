@@ -23,6 +23,8 @@ const app = {
   bumpCell: function (color) {
     // let's modify the syle directly
     document.getElementById(color).style.borderWidth = '45px';
+    // play sound
+    app.sound.play();
     // and reset the same style, after a small pause (150 ms)
     setTimeout( () => {
       document.getElementById(color).style.borderWidth = '0';
@@ -73,6 +75,7 @@ const app = {
   indice: 0,
   isClickIsAvaiblé: false,
   timeout: null,
+  sound: new Audio("./sound/sound.ogg"),
 
   showMessage: function (message) {
     const messageElement = document.getElementById('message');

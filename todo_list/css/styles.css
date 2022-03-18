@@ -129,7 +129,7 @@ body {
     padding: 10px;
 }
 
-.task__main-container {
+.task {
     background-color: var(--todo-bg-color);
     display: flex;
     margin: 10px 0;

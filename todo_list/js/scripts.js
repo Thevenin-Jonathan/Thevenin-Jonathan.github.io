@@ -69,17 +69,16 @@ function createTodo() {
     todo.element.appendChild(taskListElement);
 
     todoList.push(todo);
-    todo.tasks.push(createTask());
-    todo.tasks.push(createTask());
+    todo.tasks.push(createTask("task 1"));
+    todo.tasks.push(createTask("task 2"));
 }
 
-function createTask() {
+function createTask(text = "task") {
     const task = {
         element: document.createElement("li"),
         toDelete: false
     }
 
-    const mainContainerElement = document.createElement("div");
     const leftContainerElement = document.createElement("div");
     const middleContainerElement = document.createElement("div");
     const rightContainerElement = document.createElement("div");
@@ -92,13 +91,16 @@ function createTask() {
     const separatorElement = document.createElement("div");
 
     task.element.classList.add("task");
-    mainContainerElement.classList.add("task__main-container");
     leftContainerElement.classList.add("task__left-container");
     middleContainerElement.classList.add("task__middle-container");
     rightContainerElement.classList.add("task__right-container");
     iconUncheckElement.classList.add("todo__icon", "todo__icon--uncheck");
     contentElement.classList.add("task__content");
+    contentElement.innerText = text;
     iconUpElement.classList.add("todo__icon", "todo__icon--up");
+    iconUpElement.addEventListener("click", (e) => {
+        
+    })
     iconDownElement.classList.add("todo__icon", "todo__icon--down");
     iconEditElement.classList.add("todo__icon", "todo__icon--edit");
     iconCloseElement.classList.add("todo__icon", "todo__icon--close");
@@ -110,12 +112,11 @@ function createTask() {
         e.stopPropagation();
     })
 
-    task.element.appendChild(mainContainerElement);
-    mainContainerElement.appendChild(leftContainerElement);
-    mainContainerElement.appendChild(separatorElement);
-    mainContainerElement.appendChild(middleContainerElement);
-    mainContainerElement.appendChild(separatorElement);
-    mainContainerElement.appendChild(rightContainerElement);
+    task.element.appendChild(leftContainerElement);
+    task.element.appendChild(separatorElement);
+    task.element.appendChild(middleContainerElement);
+    task.element.appendChild(separatorElement);
+    task.element.appendChild(rightContainerElement);
     leftContainerElement.appendChild(iconUncheckElement);
     middleContainerElement.appendChild(contentElement);
     rightContainerElement.appendChild(iconUpElement);
