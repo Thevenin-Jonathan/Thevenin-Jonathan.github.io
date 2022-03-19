@@ -120,7 +120,7 @@ body {
     color: var(--red-text-color);
 }
 
-.boardgame__playground-normal {
+.boardgame__playground {
     width: 600px;
     height: 600px;
     padding: 2%;
@@ -131,11 +131,32 @@ body {
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
 }
 
+.boardgame__playground.easy {
+    width: 900px;
+    height: 600px;
+    flex-wrap: nowrap;
+}
+
+.boardgame__playground.hard {
+    width: 900px;
+    height: 600px;
+}
+
 .cell {
     height: 49%;
     width: 49%;
     border: solid 0px var(--third-color);
     transition: border, ease, 1s;
+}
+
+.boardgame__playground.easy .cell {
+    height: 98%;
+    width: 32%;
+}
+
+.boardgame__playground.hard .cell {
+    height: 49%;
+    width: 32%;
 }
 
 .score {

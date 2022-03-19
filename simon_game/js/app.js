@@ -6,30 +6,32 @@ const app = {
   // just a utility var to remember all the colors
   colors: {
     easy: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B"},
-    normal: {red: "#BA4343", green: "#2ECC71", purple: "#9B59B6", yellow: "#FFCF4B"},
-    herd: {red: "#BA4343", green: "#2ECC71", purple: "#9B59B6", yellow: "#FFCF4B"},
+    normal: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B", blue: "#0E3EDA"},
+    hard: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B", blue: "#0E3EDA", orange: "#F0A500", purple: "#9B59B6"},
 },
 
   // this var will contain the sequence said by Simon
   sequence: [],
 
   drawCells: function () {
-    const easyElement = document.querySelector(".boardgame__playground-easy");
-    const normalElement = document.querySelector(".boardgame__playground-normal");
-    const hardElement = document.querySelector(".boardgame__playground-hard");
-    const colors = app.colors[app.difficulty];
-    for (const color in colors) {
+    const playgroundElement = document.querySelector(".boardgame__playground");
+    for (const color in app.colors[app.difficulty]) {
       let cell = document.createElement('div');
       cell.className = 'cell';
       cell.id = color;
-      cell.style.backgroundColor = colors[color];
-      normalElement.appendChild(cell);
+      cell.style.backgroundColor = app.colors[app.difficulty][color];
+      playgroundElement.appendChild(cell);
     }
+  },
+
+  reDrawCells: function () {
+    const playgroundElement = document.querySelector(".boardgame__playground");
+    playgroundElement.innerHTML = "";
+    app.drawCells();
   },
 
   bumpCell: function (color) {
     // let's modify the syle directly
-    console.log(color);
     document.getElementById(color).style.borderWidth = '55px';
     // play sound
     app.isSoundActive ? app.sndBump.play() : null;
@@ -43,15 +45,19 @@ const app = {
   newGame: function () {
     if (!app.isGameStarted) {
       app.isGameStarted = true;
-      // start by reseting the sequence 
-      app.sequence = [];
-      // make it 3 times :
-      for (let index = 0; index < 3; index++) {
-        // add the corresponding color to the sequence
-        app.sequence.push(app.randomColor());
-      }
+      app.createSequence();
       // start the "Simon Says" sequence
       app.simonSays(app.sequence);
+    }
+  },
+
+  createSequence: function () {
+    // start by reseting the sequence 
+    app.sequence = [];
+    // make it 3 times :
+    for (let index = 0; index < 3; index++) {
+      // add the corresponding color to the sequence
+      app.sequence.push(app.randomColor());
     }
   },
 
@@ -64,7 +70,7 @@ const app = {
       setTimeout( app.simonSays, 850, sequence.slice(1));
     } else {
       app.showMessage("A vous !")
-      app.isClickIsAvaiblé = true;
+      app.isClickIsAvaible = true;
       app.timeoutOn();
     }
   },
@@ -75,7 +81,6 @@ const app = {
     app.addEventOnCell();
     app.addEventToMuteSound();
     app.setDifficulty();
-    app.addEventToDifficulytButton();
     document.getElementById("start").addEventListener('click', app.newGame);
     document.getElementById("restart").addEventListener('click', app.restartGame);
   },
@@ -84,7 +89,7 @@ const app = {
 
   indice: 0,
   isGameStarted: false,
-  isClickIsAvaiblé: false,
+  isClickIsAvaible: false,
   isSoundActive: true,
   timeout: null,
   score: 0,
@@ -105,6 +110,7 @@ const app = {
   randomColor: function () {
     const colors = Object.keys(app.colors[app.difficulty]);
     const indexRandom = Math.floor(Math.random() * colors.length);
+    console.log('color: ' + colors[indexRandom]);
     return colors[indexRandom];
   },
 
@@ -123,7 +129,7 @@ const app = {
 
   restartGame: function () {
     app.isGameStarted = false;
-    app.isClickIsAvaiblé = false;
+    app.isClickIsAvaible = false;
     app.indice = 0;
     app.score = 0;
     app.newGame();
@@ -132,12 +138,19 @@ const app = {
 
   setDifficulty: function () {
     const difficultyBtnElements = document.querySelectorAll("#easy, #normal, #hard");
+    const playgroungElement = document.querySelector("#playground");
     for (let buttonElement of difficultyBtnElements) {      
       buttonElement.addEventListener("click", () => {
-        if (!app.isGameStarted) {          
-          document.querySelector(".active").classList.remove("active");
-          buttonElement.classList.add("active");
+        if (!app.isGameStarted) {
+          // modifie la difficulté du jeu
           app.difficulty = buttonElement.id;
+          // modifie quel bouton est allumé
+          document.querySelector(".active").classList.remove("active");          
+          buttonElement.classList.add("active");
+          // affiche le playground de la difficulté en cours et cache les autres
+          playgroungElement.classList = `boardgame__playground ${app.difficulty}`;
+          app.reDrawCells();
+          app.createSequence();
         }
       })
     }
@@ -148,7 +161,7 @@ const app = {
     app.showMessage(`Partie terminée. Votre série la plus longue : ${app.score}`, true);
     app.sequence = [];
     app.indice = 0;
-    app.isClickIsAvaiblé = false;
+    app.isClickIsAvaible = false;
     app.isGameStarted = false;
     // play sound
     app.isSoundActive ? app.sndGameover.play() : null;
@@ -158,7 +171,7 @@ const app = {
     const cells = document.querySelectorAll(".cell");
     for (let cell of cells) {
       cell.addEventListener("click", () => {
-        if (app.isClickIsAvaiblé) {
+        if (app.isClickIsAvaible) {
           app.clickOnCell(cell.id);
         }
       })
@@ -171,10 +184,6 @@ const app = {
       soundBtnElement.classList.toggle("menu__sound-button--mute");
       app.isSoundActive = !app.isSoundActive;
     })
-  },
-
-  addEventToDifficulytButton: function () {
-
   },
 
   clickOnCell: function (color) {
@@ -200,7 +209,7 @@ const app = {
     app.timeoutOff();
     // app.updateScoreAndDisplay();
     app.indice = 0;
-    app.isClickIsAvaiblé = false;
+    app.isClickIsAvaible = false;
     const color = app.randomColor();
     app.sequence.push(color);
     setTimeout(app.simonSays, 1000, app.sequence);
