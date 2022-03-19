@@ -28,6 +28,12 @@ body {
     color: var(--main-text-color);
 }
 
+@media (max-width: 450px) {
+    body {
+        justify-content: flex-start;
+    }
+}
+
 .title {
     width: 100%;
     margin: 0;
@@ -38,12 +44,30 @@ body {
     box-shadow: var(--main-shadow);
 }
 
+@media (max-width: 450px) {
+    .title {
+        width: 100%;
+        margin: 0 0 5% 0;
+        padding: 5%;
+        font-size: 1.7rem;
+        box-shadow: none;
+    }
+}
+
 .menu-container {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    width: 100%;
     margin: 10px 10px 20px 10px;
     gap: 10px;
+}
+
+@media (max-width: 450px) {
+    .menu-container {
+        margin: 0px;
+        gap: 0px;
+    }
 }
 
 .difficulty-container {
@@ -52,6 +76,14 @@ body {
     align-items: flex-end;
     gap: 10px;
     margin-bottom: 30px;
+    width: 100%;
+}
+
+@media (max-width: 450px) {
+    .difficulty-container {
+        margin: 0px;
+        gap: 0;
+    }
 }
 
 .button {
@@ -63,6 +95,16 @@ body {
     padding: 5px 20px 10px 20px;
     cursor: pointer;
     box-shadow: var(--main-shadow);
+}
+
+@media (max-width: 450px) {
+    .button {
+        font-size: 1rem;
+        padding: 10px;
+        box-shadow: none;
+        width: 33%;
+        margin: 3px;
+    }
 }
 
 .button:hover {
@@ -99,6 +141,18 @@ body {
 
 }
 
+@media (max-width: 450px) {
+    .menu__start-button {
+        height: 40px;
+    }
+
+    .menu__sound-button,
+    .menu__restart-button {
+        width: 33%;
+        background-size: 25%;
+    }
+}
+
 .boardgame-container {
     width: 100%;
     display: flex;
@@ -116,6 +170,20 @@ body {
     box-shadow: var(--main-shadow);
 }
 
+@media (max-width: 450px) {
+    .boardgame-container {
+        padding: 7% 0;
+    }
+
+    .boardgame__message {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px 0;
+        margin: 0px 0px 7% 0px;
+        box-shadow: none;
+    }
+}
+
 .boardgame__message--red {
     color: var(--red-text-color);
 }
@@ -123,7 +191,7 @@ body {
 .boardgame__playground {
     width: 600px;
     height: 600px;
-    padding: 2%;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 2%;
@@ -160,6 +228,34 @@ body {
     width: 32%;
 }
 
+@media (max-width: 700px) {
+    .boardgame__playground {
+        width: 400px;
+        height: 400px;
+        padding: 2%;
+    }
+}
+
+@media (max-width: 450px) {
+    .boardgame__playground {
+        width: 200px;
+        height: 200px;
+        padding: 2%;
+    }
+
+    .boardgame__playground.easy {
+        width: 300px;
+        height: 200px;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .boardgame__playground.hard {
+        width: 300px;
+        height: 200px;
+    }
+}
+
 .score {
     text-align: center;
     font-size: 2rem;
@@ -168,6 +264,15 @@ body {
     width: 100%;
     background-color: var(--main-color);
     box-shadow: var(--main-shadow);
+}
+
+@media (max-width: 450px) {
+    .score {
+        font-size: 1.2rem;
+        padding: 2%;
+        margin: 10px 0px 0px 0px;
+        height: 100%;
+    }
 }
 
 .hidden {
