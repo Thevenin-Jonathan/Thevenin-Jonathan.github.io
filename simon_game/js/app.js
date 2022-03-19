@@ -29,6 +29,7 @@ const app = {
 
   bumpCell: function (color) {
     // let's modify the syle directly
+    console.log(color);
     document.getElementById(color).style.borderWidth = '55px';
     // play sound
     app.isSoundActive ? app.sndBump.play() : null;
@@ -74,6 +75,7 @@ const app = {
     app.addEventOnCell();
     app.addEventToMuteSound();
     app.setDifficulty();
+    app.addEventToDifficulytButton();
     document.getElementById("start").addEventListener('click', app.newGame);
     document.getElementById("restart").addEventListener('click', app.restartGame);
   },
@@ -86,7 +88,7 @@ const app = {
   isSoundActive: true,
   timeout: null,
   score: 0,
-  difficulty: "easy",
+  difficulty: "normal",
   sndBump: new Audio("./sound/sound.ogg"),
   sndGameover: new Audio("./sound/gameover.ogg"),
 
@@ -171,6 +173,10 @@ const app = {
     })
   },
 
+  addEventToDifficulytButton: function () {
+
+  },
+
   clickOnCell: function (color) {
     app.timeoutReset();
     app.bumpCell(color);
@@ -195,7 +201,7 @@ const app = {
     // app.updateScoreAndDisplay();
     app.indice = 0;
     app.isClickIsAvaiblé = false;
-    const color = app.colors[Math.floor(Math.random() * 4)];
+    const color = app.randomColor();
     app.sequence.push(color);
     setTimeout(app.simonSays, 1000, app.sequence);
   }
