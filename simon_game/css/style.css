@@ -135,6 +135,7 @@ body {
     width: 900px;
     height: 600px;
     flex-wrap: nowrap;
+    align-items: center;
 }
 
 .boardgame__playground.hard {
@@ -150,7 +151,7 @@ body {
 }
 
 .boardgame__playground.easy .cell {
-    height: 98%;
+    height: 49%;
     width: 32%;
 }
 

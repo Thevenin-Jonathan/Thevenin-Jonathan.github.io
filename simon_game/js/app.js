@@ -24,10 +24,11 @@ const app = {
     }
   },
 
-  reDrawCells: function () {
+  reDrawCellsAndAddEvent: function () {
     const playgroundElement = document.querySelector(".boardgame__playground");
     playgroundElement.innerHTML = "";
     app.drawCells();
+    app.addEventOnCell();
   },
 
   bumpCell: function (color) {
@@ -149,7 +150,7 @@ const app = {
           buttonElement.classList.add("active");
           // affiche le playground de la difficulté en cours et cache les autres
           playgroungElement.classList = `boardgame__playground ${app.difficulty}`;
-          app.reDrawCells();
+          app.reDrawCellsAndAddEvent();
           app.createSequence();
         }
       })
@@ -163,7 +164,6 @@ const app = {
     app.indice = 0;
     app.isClickIsAvaible = false;
     app.isGameStarted = false;
-    // play sound
     app.isSoundActive ? app.sndGameover.play() : null;
   },
 
