@@ -4,20 +4,26 @@
  */
 const app = {
   // just a utility var to remember all the colors
-  colors: ['red','green','purple','yellow'],
-  colorsHex: ["#FF6C5C", "#2ECC71", "#9B59B6", "#FFCF4B"],
+  colors: {
+    easy: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B"},
+    normal: {red: "#BA4343", green: "#2ECC71", purple: "#9B59B6", yellow: "#FFCF4B"},
+    herd: {red: "#BA4343", green: "#2ECC71", purple: "#9B59B6", yellow: "#FFCF4B"},
+},
 
   // this var will contain the sequence said by Simon
   sequence: [],
 
   drawCells: function () {
-    const playground = document.querySelector(".boardgame__playground-normal");
-    for (const color of app.colors) {
+    const easyElement = document.querySelector(".boardgame__playground-easy");
+    const normalElement = document.querySelector(".boardgame__playground-normal");
+    const hardElement = document.querySelector(".boardgame__playground-hard");
+    const colors = app.colors[app.difficulty];
+    for (const color in colors) {
       let cell = document.createElement('div');
       cell.className = 'cell';
       cell.id = color;
-      cell.style.backgroundColor = app.colorsHex[app.colors.indexOf(color)];
-      playground.appendChild(cell);
+      cell.style.backgroundColor = colors[color];
+      normalElement.appendChild(cell);
     }
   },
 
@@ -40,12 +46,9 @@ const app = {
       app.sequence = [];
       // make it 3 times :
       for (let index = 0; index < 3; index++) {
-        // get a random number between 0 and 3
-        let random = Math.floor(Math.random()*4);
         // add the corresponding color to the sequence
-        app.sequence.push( app.colors[random] );
+        app.sequence.push(app.randomColor());
       }
-
       // start the "Simon Says" sequence
       app.simonSays(app.sequence);
     }
@@ -95,6 +98,12 @@ const app = {
     } else {      
       messageElement.classList.remove("boardgame__message--red");
     }
+  },
+
+  randomColor: function () {
+    const colors = Object.keys(app.colors[app.difficulty]);
+    const indexRandom = Math.floor(Math.random() * colors.length);
+    return colors[indexRandom];
   },
 
   timeoutOn: function () {
@@ -175,9 +184,15 @@ const app = {
     }
   },
 
+  updateScoreAndDisplay: function () {    
+    app.score = app.sequence.length;
+    const scoreTextElement = document.getElementsByClassName("score");
+    scoreTextElement.innerHTML = `Score de série : ${app.score}`;
+  },
+
   nextMove: function () {
     app.timeoutOff();
-    app.score = app.sequence.length;
+    // app.updateScoreAndDisplay();
     app.indice = 0;
     app.isClickIsAvaiblé = false;
     const color = app.colors[Math.floor(Math.random() * 4)];
