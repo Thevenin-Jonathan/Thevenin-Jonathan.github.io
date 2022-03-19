@@ -201,13 +201,13 @@ const app = {
 
   updateScoreAndDisplay: function () {    
     app.score = app.sequence.length;
-    const scoreTextElement = document.getElementsByClassName("score");
-    scoreTextElement.innerHTML = `Score de série : ${app.score}`;
+    const scoreTextElement = document.getElementById("score");
+    scoreTextElement.innerText = `Score de série : ${app.score}`;
   },
 
   nextMove: function () {
     app.timeoutOff();
-    // app.updateScoreAndDisplay();
+    app.updateScoreAndDisplay();
     app.indice = 0;
     app.isClickIsAvaible = false;
     const color = app.randomColor();
