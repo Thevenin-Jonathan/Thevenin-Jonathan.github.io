@@ -189,8 +189,8 @@ body {
 }
 
 .boardgame__playground {
-    width: 600px;
-    height: 600px;
+    width: 560px;
+    height: 560px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -200,15 +200,15 @@ body {
 }
 
 .boardgame__playground.easy {
-    width: 900px;
-    height: 600px;
+    width: 840px;
+    height: 560px;
     flex-wrap: nowrap;
     align-items: center;
 }
 
 .boardgame__playground.hard {
-    width: 900px;
-    height: 600px;
+    width: 840px;
+    height: 560px;
 }
 
 .cell {
@@ -228,11 +228,43 @@ body {
     width: 32%;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
     .boardgame__playground {
         width: 400px;
         height: 400px;
         padding: 2%;
+    }
+
+    .boardgame__playground.easy {
+        width: 600px;
+        height: 400px;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .boardgame__playground.hard {
+        width: 600px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .boardgame__playground {
+        width: 400px;
+        height: 400px;
+        padding: 2%;
+    }
+
+    .boardgame__playground.easy {
+        width: 420px;
+        height: 280px;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .boardgame__playground.hard {
+        width: 420px;
+        height: 280px;
     }
 }
 
