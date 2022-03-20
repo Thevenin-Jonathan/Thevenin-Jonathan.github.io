@@ -26,6 +26,7 @@ const app = {
 
   init: function () {
     console.log('init');
+    app.displayBetterScore();
     app.drawCells();
     app.addEventOnCell();
     app.addEventToMuteSound();
@@ -244,10 +245,20 @@ const app = {
         app.scores.splice(index, 0, newScore);
         app.scores.pop();
         app.currentScore = 0;
+        app.displayBetterScore();
         return;
       }
     }
   },
+
+  displayBetterScore: function () {
+    document.getElementById("best-score__first").innerHTML =
+    `${app.scores[0].name} <span id="first-score">${app.scores[0].score}</span>`;
+    document.getElementById("best-score__second").innerHTML =
+    `${app.scores[1].name} <span id="second-score">${app.scores[1].score}</span>`;
+    document.getElementById("best-score__third").innerHTML =
+    `${app.scores[2].name} <span id="third-score">${app.scores[2].score}</span>`;
+  }
 };
 
 

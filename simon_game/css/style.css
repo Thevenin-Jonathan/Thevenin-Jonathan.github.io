@@ -321,7 +321,7 @@ body {
     border-bottom: var(--main-text-color) 1px solid;
 }
 
-.best-score__first {
+#best-score__first {
     border-top: var(--main-text-color) 1px solid;
 }
 
