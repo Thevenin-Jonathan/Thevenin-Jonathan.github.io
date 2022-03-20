@@ -14,21 +14,24 @@
 
 <body>
     <h1 class="title">SIMON GAME</h1>
-    <div class="menu-container">
+    <section class="menu">
         <button class="menu__sound-button button" id="sound"></button>
         <button class="menu__start-button button" id="start">START</button>
         <button class="menu__restart-button button" id="restart"></button>
-    </div>
-    <div class="difficulty-container">
+    </section>
+    <section class="difficulty">
         <button class="difficulty__easy-button button" id="easy">Easy</button>
         <button class="difficulty__normal-button button active" id="normal">Normal</button>
         <button class="difficulty__hard-button button" id="hard">Hard</button>
-    </div>
-    <div class="boardgame-container">
+    </section>
+    <section class="boardgame">
         <div class="boardgame__message" id="message">Push START to play !</div>
         <div class="boardgame__playground normal" id="playground"></div>
-    </div>
+    </section>
     <div class="score" id="score">Score de série : 0</div>
+    <section class="best-score">
+
+    </section>
 
     <script src="./js/app.js"></script>
 </body>

@@ -54,7 +54,7 @@ body {
     }
 }
 
-.menu-container {
+.menu {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -64,14 +64,14 @@ body {
 }
 
 @media (max-width: 450px) {
-    .menu-container {
+    .menu {
         align-items: center;
         margin: 0px;
         gap: 0px;
     }
 }
 
-.difficulty-container {
+.difficulty {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -81,7 +81,7 @@ body {
 }
 
 @media (max-width: 450px) {
-    .difficulty-container {
+    .difficulty {
         align-items: center;
         margin: 0px;
         gap: 0;
@@ -155,7 +155,7 @@ body {
     }
 }
 
-.boardgame-container {
+.boardgame {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -173,7 +173,7 @@ body {
 }
 
 @media (max-width: 450px) {
-    .boardgame-container {
+    .boardgame {
         padding: 7% 0;
     }
 
