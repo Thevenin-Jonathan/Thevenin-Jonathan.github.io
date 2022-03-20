@@ -4,7 +4,7 @@ const app = {
     easy: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B"},
     normal: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B", blue: "#0E3EDA"},
     hard: {red: "#BA4343", green: "#2ECC71", yellow: "#FFCF4B", blue: "#0E3EDA", orange: "#F0A500", purple: "#9B59B6"},
-},
+  },
 
   // this var will contain the sequence said by Simon
   sequence: [],
@@ -26,7 +26,7 @@ const app = {
 
   init: function () {
     console.log('init');
-    app.displayBetterScore();
+    app.loadAndDisplayJSONScores();
     app.drawCells();
     app.addEventOnCell();
     app.addEventToMuteSound();
@@ -245,10 +245,20 @@ const app = {
         app.scores.splice(index, 0, newScore);
         app.scores.pop();
         app.currentScore = 0;
+        app.saveJSONScores();
         app.displayBetterScore();
         return;
       }
     }
+  },
+
+  saveJSONScores: function () {
+    //todo
+  },
+
+  loadAndDisplayJSONScores: function () {
+    //todo
+    app.displayBetterScore();
   },
 
   displayBetterScore: function () {
