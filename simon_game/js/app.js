@@ -1,7 +1,3 @@
-/**
- * 
- * Code fourni
- */
 const app = {
   // just a utility var to remember all the colors
   colors: {
@@ -12,6 +8,31 @@ const app = {
 
   // this var will contain the sequence said by Simon
   sequence: [],
+  indice: 0,
+  nbOfSequenceCellAtStart: 1,
+  isGameStarted: false,
+  isClickIsAvaible: false,
+  isSoundActive: true,
+  timeout: null,
+  currentScore: 0,
+  difficulty: "normal",
+  sndBump: new Audio("./sound/sound.ogg"),
+  sndGameover: new Audio("./sound/gameover.ogg"),
+  scores: [
+    {name: "---", score: 0},
+    {name: "---", score: 0},
+    {name: "---", score: 0}
+  ],
+
+  init: function () {
+    console.log('init');
+    app.drawCells();
+    app.addEventOnCell();
+    app.addEventToMuteSound();
+    app.setDifficulty();
+    document.getElementById("start").addEventListener('click', app.newGame);
+    document.getElementById("restart").addEventListener('click', app.restartGame);
+  },
 
   drawCells: function () {
     const playgroundElement = document.querySelector(".boardgame__playground");
@@ -56,47 +77,25 @@ const app = {
     // start by reseting the sequence 
     app.sequence = [];
     // make it 3 times :
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < app.nbOfSequenceCellAtStart; index++) {
       // add the corresponding color to the sequence
       app.sequence.push(app.randomColor());
     }
   },
 
   simonSays: function (sequence) {
-    app.showMessage("MEMORISEZ la séquence..")
+    app.showMessage("MEMORIZE the sequence..")
     if (sequence && sequence.length) {
       // after 500ms, bump the first cell
       setTimeout( app.bumpCell, 500, sequence[0] );
       // plays the rest of the sequence after a longer pause
       setTimeout( app.simonSays, 850, sequence.slice(1));
     } else {
-      app.showMessage("A vous !")
+      app.showMessage("Your turn !")
       app.isClickIsAvaible = true;
       app.timeoutOn();
     }
   },
-
-  init: function () {
-    console.log('init');
-    app.drawCells();
-    app.addEventOnCell();
-    app.addEventToMuteSound();
-    app.setDifficulty();
-    document.getElementById("start").addEventListener('click', app.newGame);
-    document.getElementById("restart").addEventListener('click', app.restartGame);
-  },
-
-  /** Fin du code fourni. Après, c'est à toi de jouer! */
-
-  indice: 0,
-  isGameStarted: false,
-  isClickIsAvaible: false,
-  isSoundActive: true,
-  timeout: null,
-  score: 0,
-  difficulty: "normal",
-  sndBump: new Audio("./sound/sound.ogg"),
-  sndGameover: new Audio("./sound/gameover.ogg"),
 
   showMessage: function (message, isRed = false) {
     const messageElement = document.getElementById('message');
@@ -132,7 +131,7 @@ const app = {
     app.isGameStarted = false;
     app.isClickIsAvaible = false;
     app.indice = 0;
-    app.score = 0;
+    app.currentScore = 0;
     app.newGame();
     app.timeoutOff();
   },
@@ -159,7 +158,8 @@ const app = {
 
   endGame: function () {
     app.timeoutOff();
-    app.showMessage(`Partie terminée. Votre série la plus longue : ${app.score}`, true);
+    app.showMessage(`Gameover ! Your longest streak: ${app.currentScore}`, true);
+    app.checkBetterScore();
     app.sequence = [];
     app.indice = 0;
     app.isClickIsAvaible = false;
@@ -200,9 +200,7 @@ const app = {
   },
 
   updateScoreAndDisplay: function () {    
-    app.score = app.sequence.length;
-    const scoreTextElement = document.getElementById("score");
-    scoreTextElement.innerText = `Score de série : ${app.score}`;
+    app.currentScore = app.sequence.length;
   },
 
   nextMove: function () {
@@ -213,8 +211,43 @@ const app = {
     const color = app.randomColor();
     app.sequence.push(color);
     setTimeout(app.simonSays, 1000, app.sequence);
-  }
+  },
 
+  checkBetterScore: function () {
+    const minScore = app.scores[app.scores.length - 1].score;
+    if (app.currentScore > minScore) {
+      app.displayPopupUsername();
+    }
+  },
+
+  displayPopupUsername: function () {
+    const popupUsernameElement = document.querySelector(".popup-score");
+    popupUsernameElement.classList.remove("hidden");
+    const inputUsernameElement = document.querySelector(".popup-score__input");
+    inputUsernameElement.focus();
+    document.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        popupUsernameElement.classList.add("hidden");
+        const username = inputUsernameElement.value;
+        inputUsernameElement.value = "";
+        app.updBetterScores(username);
+      }
+    })
+  },
+
+  updBetterScores: function (username) {
+    const lenght = app.scores.length;
+    for (let index = 0; index < lenght; index++) {
+      let bestUser = app.scores[index];
+      if (app.currentScore > bestUser.score) {
+        const newScore = {name: username, score: app.currentScore};
+        app.scores.splice(index, 0, newScore);
+        app.scores.pop();
+        app.currentScore = 0;
+        return;
+      }
+    }
+  },
 };
 
 

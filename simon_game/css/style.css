@@ -220,6 +220,10 @@ body {
     transition: border, ease, 1s;
 }
 
+.cell:hover {
+    cursor: pointer;
+}
+
 .boardgame__playground.easy .cell {
     height: 49%;
     width: 32%;
@@ -290,23 +294,92 @@ body {
     }
 }
 
-.score {
+.best-score {
     text-align: center;
-    font-size: 2rem;
-    padding: 40px 0;
     margin-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
+    font-size: 1.5rem;
+    font-weight: 400;
     background-color: var(--main-color);
     box-shadow: var(--main-shadow);
 }
 
+.best-score__title {
+    margin: 0;
+    padding: 10px 0;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.best-score__scores {
+    max-width: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: var(--main-text-color) 1px solid;
+}
+
+.best-score__first {
+    border-top: var(--main-text-color) 1px solid;
+}
+
 @media (max-width: 450px) {
-    .score {
+    .best-score {
         font-size: 1.2rem;
         padding: 2%;
         margin: 10px 0px 0px 0px;
         height: 100%;
     }
+}
+
+.popup-score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.505);
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 50px;
+    background-color: var(--main-color);
+}
+
+.popup-score__title {
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.popup-score__message {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+    font-weight: 400;
+    border-bottom: var(--main-text-color) 1px solid;
+}
+
+.popup-score__input {
+    outline: none;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 0;
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--main-text-color);
+    background-color: var(--second-color);
 }
 
 .hidden {

@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./favicon.ico">
     <title>Simon Game</title>
 </head>
 
@@ -28,10 +29,19 @@
         <div class="boardgame__message" id="message">Push START to play !</div>
         <div class="boardgame__playground normal" id="playground"></div>
     </section>
-    <div class="score" id="score">Score de série : 0</div>
     <section class="best-score">
-
+        <h2 class="best-score__title">Best series:</h2>
+        <div class="best-score__first best-score__scores">Jo : <span id="first-score">12</span></div>
+        <div class="best-score__second best-score__scores">Polo : <span id="second-score">9</span></div>
+        <div class="best-score__third best-score__scores">Aaron : <span id="third-score">8</span></div>
     </section>
+    <div class="popup-score hidden">
+        <div class="popup-content">
+            <div class="popup-score__title">First place!</div>
+            <div class="popup-score__message">Your name :</div>
+            <input type="text" class="popup-score__input">
+        </div>
+    </div>
 
     <script src="./js/app.js"></script>
 </body>
