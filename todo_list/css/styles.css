@@ -1,13 +1,10 @@
 :root {
     --main-font: 'Kalam', cursive;
 
-    --header-bg-color: #2998ec;
-    --main-bg-color: #74b9ff;
+    --main-color: #2998ec;
+    --second-color: #74b9ff;
+
     --main-font-color: white;
-    --hover-font-color: #2d3436;
-    --todo-top-bg-color: #45a5ee;
-    --todo-back-bg-color: #62b5f5;
-    --todo-bg-color: #76bff7;
 }
 
 * {
@@ -23,7 +20,7 @@
 /*********************************************/
 
 .header-banner {
-    background-color: var(--header-bg-color);
+    background-color: var(--main-color);
     position: relative;
     height: 50px;
     display: flex;
@@ -44,12 +41,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-}
-
-.header__add-container:hover>* {
-    color: var(--hover-font-color);
     cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
 }
 
 .header__add-text {
@@ -69,195 +61,131 @@
 /*********************************************/
 /*******************Main********************/
 /*********************************************/
-body {
-    background-color: var(--main-bg-color);
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .todos-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    font-family: var(--main-font);
-    font-weight: 300;
-    font-size: 1.1rem;
 }
 
 .todo {
-    color: var(--main-font-color);
-    margin: 30px 20px 0 20px;
-    min-width: 350px;
-    max-width: 500px;
-    height: fit-content;
-    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.10);
-}
-
-.todo__top-container {
-    background-color: var(--todo-top-bg-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-}
-
-.top-container__input-title {
-    outline: none;
-    border: none;
-    background-color: var(--todo-top-bg-color);
-    color: var(--main-font-color);
     font-family: var(--main-font);
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    padding-top: 5px;
-    margin-left: 8px;
-    font-weight: 400;
+    font-size: 1rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
 }
 
-.top-container__title {
+.todo__header {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    color: var(--main-font-color);
+    background-color: var(--main-color);
+    border-radius: 8px 8px 0 0;
+}
+
+.todo__header-title {
     padding-top: 5px;
     margin-left: 10px;
-    font-weight: 400;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-}
-
-.icon-container {
-    display: flex;
-}
-
-.todo__task-list {
-    background-color: var(--todo-back-bg-color);
-    padding: 10px;
-}
-
-.task {
-    background-color: var(--todo-bg-color);
-    display: flex;
-    margin: 10px 0;
-    width: 100%;
-}
-
-.task__separator {
-    width: 5px;
-    background-image: url(../img/line.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.task__left-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.task__middle-container {
-    padding: 0 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 200px;
     flex: 1;
 }
 
-.task__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 0px;
+.todo__content {
+    border-radius: 0 0 8px 8px;
+    border: 1px #ddd solid;
+    border-top: none;
 }
 
-.task__right-container {
+.tasks-list {
+    padding: 10px 10px 0 10px;
+}
+
+.task {
     display: flex;
-    justify-content: space-between;
-    gap: 5px;
     align-items: center;
-    padding: 10px 10px 10px 10px;
+    margin-bottom: 10px;
 }
 
-.todo__icon {
-    width: 25px;
+.task__name {
+    min-width: 150px;
+    font-size: 1.1em;
+    padding-top: 4px;
+    margin: 0 10px;
+    flex: 1;
+}
+
+.task-separator {
+    height: 1px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.icon {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all, ease, 100ms;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+.icon-header {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    margin-left: 0;
+}
+
+.icon-task {
     height: 25px;
+    width: 25px;
+    margin: 0px 3px;
 }
 
-.todo__icon--edit-list {
-    background-image: url(../img/edit.png);
-    background-size: contain;
-    margin-right: 5px;
+.icon-separator {
+    height: 25px;
+    width: 1px;
 }
 
-.todo__icon--edit-list:hover {
-    cursor: pointer;
-    background-image: url(../img/edit-green.png);
+.task-separator,
+.task__separator {
+    background-color: rgba(0, 0, 0, 0.192);
 }
 
-.todo__icon--close-list {
-    background-image: url(../img/close.png);
-    background-size: contain;
-    margin-right: 5px;
+.todo__header-edit {
+    background-image: url("../img/edit.png");
 }
 
-.todo__icon--close-list:hover {
-    cursor: pointer;
-    background-image: url(../img/close-red.png);
+.todo__header-close {
+    background-image: url("../img/close.png");
 }
 
-.todo__icon--check {
-    background-image: url(../img/checked.png);
-    background-size: contain;
+.task__checkbox {
+    margin-right: 10px;
+    background-image: url("../img/unchecked-black.png");
 }
 
-.todo__icon--check:hover {
-    cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+.task__up {
+    margin-left: 10px;
+    background-image: url("../img/up-black.png");
 }
 
-.todo__icon--uncheck {
-    background-image: url(../img/unchecked.png);
-    background-size: contain;
+.task__down {
+    background-image: url("../img/down-black.png");
 }
 
-.todo__icon--uncheck:hover {
-    cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+.task__edit {
+    background-image: url("../img/edit-black.png");
 }
 
-.todo__icon--close {
-    background-image: url(../img/close.png);
-    background-size: contain;
-}
-
-.todo__icon--close:hover {
-    cursor: pointer;
-    background-image: url(../img/close-red.png);
-}
-
-.todo__icon--edit {
-    background-image: url(../img/edit.png);
-    background-size: contain;
-}
-
-.todo__icon--edit:hover {
-    cursor: pointer;
-    background-image: url(../img/edit-green.png);
-
-}
-
-.todo__icon--up {
-    background-image: url(../img/up.png);
-    background-size: contain;
-}
-
-.todo__icon--up:hover {
-    cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
-}
-
-.todo__icon--down {
-    background-image: url(../img/down.png);
-    background-size: contain;
-}
-
-.todo__icon--down:hover {
-    cursor: pointer;
-    filter: brightness(0) saturate(100%) invert(12%) sepia(0%) saturate(115%) hue-rotate(189deg) brightness(98%) contrast(96%);
+.task__close {
+    background-image: url("../img/close-black.png");
 }
