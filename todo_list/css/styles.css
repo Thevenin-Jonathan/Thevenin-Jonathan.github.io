@@ -64,20 +64,21 @@
 
 main {
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .todos-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .todo {
     font-family: var(--main-font);
     font-size: 1rem;
+    height: fit-content;
+    max-width: 500px;
     border-radius: 8px;
+    margin: 20px;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
 }
 
@@ -113,11 +114,12 @@ main {
 }
 
 .task__name {
-    min-width: 150px;
+    min-width: 100px;
     font-size: 1.1em;
     padding-top: 4px;
     margin: 0 10px;
     flex: 1;
+    opacity: 0.7;
 }
 
 .task-separator {
@@ -131,6 +133,7 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     transition: all, ease, 100ms;
+    cursor: pointer;
 }
 
 .icon:hover {
@@ -148,6 +151,7 @@ main {
     height: 25px;
     width: 25px;
     margin: 0px 3px;
+    opacity: 0.7;
 }
 
 .icon-separator {
