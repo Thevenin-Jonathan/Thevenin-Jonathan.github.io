@@ -26,22 +26,25 @@ const displayTodos = () => {
         return createTodoElement(todo, index);
     })
     const todosContainerElement = document.querySelector(".todos-container");
+    todosContainerElement.innerHTML = "";
     todosContainerElement.append(...todosNodes);
 }
 
 const createTodoElement = (todo, index) => {
     const todoElement = document.createElement("div");
     todoElement.classList.add("todo");
-    todoElement.innerHTML = `
-        <div class="todo__header">
-            <h2 class="todo__header-title">${todo.title}</h2>
-            ${createHeaderEditElement(todo, index)}
-            <button class="todo__header-btn-close btn"></button>
-        </div>
-        <div class="todo__content">
-            ${createTaskListElement(todo)}
-        </div>
-    `;
+    const todoHeaderElement = document.createElement("div");
+    todoHeaderElement.classList.add("todo__header");
+    const todoContentElement = document.createElement("div");
+    todoContentElement.classList.add("todo__content");
+    const todoHeaderTitleElement = document.createElement("h2");
+    todoHeaderTitleElement.classList.add("todo__header-title");
+    todoHeaderTitleElement.innerText = todo.title;
+    const headerEditBtnElement = createHeaderEditBtnElement(index);
+    const headerCloseBtnElement = createHeaderCloseBtnElement(index);
+    todoHeaderElement.append(todoHeaderTitleElement, headerEditBtnElement, headerCloseBtnElement);
+    todoContentElement.append(createTaskListElement(todo, index));
+    todoElement.append(todoHeaderElement, todoContentElement);
     return todoElement;
 }
 
@@ -53,12 +56,23 @@ const createTaskListElement = (todo) => {
     });    
     const addTaskButtonElement = createAddTaskButton();
     tasksListElement.append(...taskElements, addTaskButtonElement);
-    return tasksListElement.outerHTML;
+    return tasksListElement;
 }
 
-const createHeaderEditElement = (todo, index) => {
-    // <span class="todo__header-btn-edit btn"></span>
+const createHeaderEditBtnElement = (index) => {
+    const editBtnElement = document.createElement("button");
+    editBtnElement.classList.add("todo__header-btn-edit", "btn");
+    return editBtnElement;
+}
 
+const createHeaderCloseBtnElement = (index) => {
+    const closeBtnElement = document.createElement("button");
+    closeBtnElement.classList.add("todo__header-btn-close", "btn");
+    closeBtnElement.addEventListener("click", () => {
+        todos.splice(index, 1);
+        displayTodos();
+    })
+    return closeBtnElement;
 }
 
 const createTaskElement = (task, index) => {
