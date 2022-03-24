@@ -89,7 +89,7 @@ main {
     align-items: center;
     font-size: 1.2em;
     color: var(--main-font-color);
-    background-color: var(--main-color);
+    background-color: var(--second-color);
     border-radius: 8px 8px 0 0;
 }
 
