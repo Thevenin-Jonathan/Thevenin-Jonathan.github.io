@@ -1,8 +1,10 @@
 :root {
     --main-font: 'Kalam', cursive;
 
-    --main-color: #2998ec;
-    --second-color: #74b9ff;
+    --main-color: #1A374D;
+    --second-color: #406882;
+    --third-color: #6998AB;
+    --fourth-color: #B1D0E0;
 
     --main-font-color: white;
 }
@@ -119,7 +121,6 @@ main {
     padding-top: 4px;
     margin: 0 10px;
     flex: 1;
-    opacity: 0.7;
 }
 
 .task-separator {
@@ -151,7 +152,30 @@ main {
     height: 25px;
     width: 25px;
     margin: 0px 3px;
-    opacity: 0.7;
+}
+
+.task-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-add__button {
+    background-color: var(--third-color);
+    color: #fff;
+    width: 200px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--main-font);
+    font-size: 1.1em;
+    transform: scale(1.0);
+    transition: all, ease, 100ms;
+}
+
+.task-add__button:hover {
+    transform: scale(1.05);
 }
 
 .icon-separator {
@@ -161,7 +185,7 @@ main {
 
 .task-separator,
 .task__separator {
-    background-color: rgba(0, 0, 0, 0.192);
+    background-color: var(--fourth-color);
 }
 
 .todo__header-edit {
