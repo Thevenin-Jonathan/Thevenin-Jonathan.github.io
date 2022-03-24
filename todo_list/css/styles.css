@@ -37,13 +37,7 @@
     font-size: 1.8rem;
     margin-left: 10px;
     margin-top: 5px;
-}
-
-.header__add-container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    flex: 1;
 }
 
 .header__add-text {
@@ -52,12 +46,19 @@
     font-weight: 300;
 }
 
-.header__add-button {
+.header__add-btn {
     height: 35px;
     width: 35px;
     margin: auto 10px;
     background-image: url(../img/add-button.png);
     background-size: contain;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all, ease, 200ms;
+}
+
+.header__add-button:hover {
+    transform: scale(1.1);
 }
 
 /*********************************************/

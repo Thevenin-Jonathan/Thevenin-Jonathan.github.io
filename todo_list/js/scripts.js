@@ -1,6 +1,3 @@
-const addTodoElement = document.querySelector(".header__add-container");
-addTodoElement.addEventListener("click", () => {})
-
 const todos = [
     {
         title: "todo 1",
@@ -20,6 +17,18 @@ const todos = [
         ],
     },
 ]
+
+const createTodo = () => {
+    todos.push({
+        title: `todo ${todos.length + 1}`,
+        tasks: []
+    });
+}
+const addTodoElement = document.querySelector(".header__add-btn");
+addTodoElement.addEventListener("click", () => {
+    createTodo();
+    displayTodos();
+});
 
 const displayTodos = () => {
     const todosNodes = todos.map((todo, index) => {
@@ -69,10 +78,15 @@ const createHeaderCloseBtnElement = (index) => {
     const closeBtnElement = document.createElement("button");
     closeBtnElement.classList.add("todo__header-btn-close", "btn");
     closeBtnElement.addEventListener("click", () => {
-        todos.splice(index, 1);
-        displayTodos();
+        deleteTodo(index);
     })
     return closeBtnElement;
+}
+
+const deleteTodo = (index) => {
+    todos.splice(index, 1);
+    todos.forEach( (todo, index) => todo.title = `todo ${index + 1}`);
+    displayTodos();
 }
 
 const createTaskElement = (task, index) => {
