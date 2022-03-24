@@ -65,14 +65,14 @@ const createTaskElement = (task, index) => {
     const taskElement = document.createElement("li");
     taskElement.classList.add("task");
     taskElement.innerHTML = `
-    <span class="${task.done ? "task__btn-checkbox--done" : "task__btn-checkbox"} btn"></span>
+    <button class="${task.done ? "task__btn-checkbox--done" : "task__btn-checkbox"} btn"></button>
     <span class="task__separator icon-separator btn"></span>
     <p class="task__name">${task.text}</p>
     <span class="task__separator icon-separator btn"></span>
-    <span class="task__btn-up btn"></span>
-    <span class="task__btn-down btn"></span>
-    <span class="task__btn-edit btn"></span>
-    <span class="task__btn-close btn"></span>
+    <button class="task__btn-up btn"></button>
+    <button class="task__btn-down btn"></button>
+    <button class="task__btn-edit btn"></button>
+    <button class="task__btn-close btn"></button>
     `;
     return taskElement;
 }
