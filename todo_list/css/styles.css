@@ -113,6 +113,8 @@ main {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px var(--fourth-color) solid;
 }
 
 .task__name {
@@ -121,12 +123,6 @@ main {
     padding-top: 4px;
     margin: 0 10px;
     flex: 1;
-}
-
-.task-separator {
-    height: 1px;
-    width: 100%;
-    margin-bottom: 10px;
 }
 
 .icon {
@@ -183,7 +179,6 @@ main {
     width: 1px;
 }
 
-.task-separator,
 .task__separator {
     background-color: var(--fourth-color);
 }
