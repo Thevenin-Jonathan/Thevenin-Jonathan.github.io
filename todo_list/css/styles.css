@@ -125,29 +125,18 @@ main {
     flex: 1;
 }
 
-.icon {
+.btn {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
     transition: all, ease, 100ms;
     cursor: pointer;
 }
 
-.icon:hover {
+.btn:hover {
     transform: scale(1.1);
-}
-
-.icon-header {
-    height: 30px;
-    width: 30px;
-    margin: 5px;
-    margin-left: 0;
-}
-
-.icon-task {
-    height: 25px;
-    width: 25px;
-    margin: 0px 3px;
 }
 
 .task-add {
@@ -156,7 +145,7 @@ main {
     align-items: center;
 }
 
-.task-add__button {
+.task-add__btn {
     background-color: var(--third-color);
     color: #fff;
     width: 200px;
@@ -183,32 +172,50 @@ main {
     background-color: var(--fourth-color);
 }
 
-.todo__header-edit {
+.todo__header-btn-edit,
+.todo__header-btn-close {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+    margin-left: 0;
+}
+
+.todo__header-btn-edit {
     background-image: url("../img/edit.png");
 }
 
-.todo__header-close {
+.todo__header-btn-close {
     background-image: url("../img/close.png");
 }
 
-.task__checkbox {
+.task__btn-checkbox,
+.task__btn-up,
+.task__btn-down,
+.task__btn-edit,
+.task__btn-close {
+    height: 25px;
+    width: 25px;
+    margin: 0px 3px;
+}
+
+.task__btn-checkbox {
     margin-right: 10px;
     background-image: url("../img/unchecked-black.png");
 }
 
-.task__up {
+.task__btn-up {
     margin-left: 10px;
     background-image: url("../img/up-black.png");
 }
 
-.task__down {
+.task__btn-down {
     background-image: url("../img/down-black.png");
 }
 
-.task__edit {
+.task__btn-edit {
     background-image: url("../img/edit-black.png");
 }
 
-.task__close {
+.task__btn-close {
     background-image: url("../img/close-black.png");
 }

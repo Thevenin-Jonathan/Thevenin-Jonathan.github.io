@@ -31,21 +31,21 @@ const displayTodos = () => {
 
 const createTodoElement = (todo, index) => {
     const todoElement = document.createElement("div");
-    todoElement.classList.add("todo", `todo-${index}`);
+    todoElement.classList.add("todo");
     todoElement.innerHTML = `
         <div class="todo__header">
             <h2 class="todo__header-title">${todo.title}</h2>
-            <span class="todo__header-edit icon-header icon"></span>
-            <span class="todo__header-close icon-header icon"></span>
+            ${createHeaderEditElement(todo, index)}
+            <button class="todo__header-btn-close btn"></button>
         </div>
         <div class="todo__content">
-            ${createHTMLTaskListElement(todo)}
+            ${createTaskListElement(todo)}
         </div>
     `;
     return todoElement;
 }
 
-const createHTMLTaskListElement = (todo) => {
+const createTaskListElement = (todo) => {
     const tasksListElement = document.createElement("ul");
     tasksListElement.classList.add("tasks-list");
     const taskElements = todo.tasks.map((task, index) => {
@@ -56,18 +56,23 @@ const createHTMLTaskListElement = (todo) => {
     return tasksListElement.outerHTML;
 }
 
+const createHeaderEditElement = (todo, index) => {
+    // <span class="todo__header-btn-edit btn"></span>
+
+}
+
 const createTaskElement = (task, index) => {
     const taskElement = document.createElement("li");
-    taskElement.classList.add("task", `task-${index}`);
+    taskElement.classList.add("task");
     taskElement.innerHTML = `
-    <span class="${task.done ? "task__checkbox--done" : "task__checkbox"} icon-task icon"></span>
-    <span class="task__separator icon-separator icon"></span>
+    <span class="${task.done ? "task__btn-checkbox--done" : "task__btn-checkbox"} btn"></span>
+    <span class="task__separator icon-separator btn"></span>
     <p class="task__name">${task.text}</p>
-    <span class="task__separator icon-separator icon"></span>
-    <span class="task__up icon-task icon"></span>
-    <span class="task__down icon-task icon"></span>
-    <span class="task__edit icon-task icon"></span>
-    <span class="task__close icon-task icon"></span>
+    <span class="task__separator icon-separator btn"></span>
+    <span class="task__btn-up btn"></span>
+    <span class="task__btn-down btn"></span>
+    <span class="task__btn-edit btn"></span>
+    <span class="task__btn-close btn"></span>
     `;
     return taskElement;
 }
@@ -75,7 +80,7 @@ const createTaskElement = (task, index) => {
 const createAddTaskButton = () => {
     const addTaskButtonElement = document.createElement("li");
     addTaskButtonElement.classList.add("task-add");
-    addTaskButtonElement.innerHTML = `<button class="task-add__button">Add task</button>`;
+    addTaskButtonElement.innerHTML = `<button class="task-add__btn">Add task</button>`;
     return addTaskButtonElement;
 }
 
