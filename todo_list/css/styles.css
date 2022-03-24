@@ -7,6 +7,7 @@
     --fourth-color: #B1D0E0;
 
     --main-font-color: white;
+    --strike-font-color: #890F0D;
 }
 
 * {
@@ -57,7 +58,7 @@
     transition: all, ease, 200ms;
 }
 
-.header__add-button:hover {
+.header__add-btn:hover {
     transform: scale(1.1);
 }
 
@@ -95,6 +96,7 @@ main {
 }
 
 .todo__header-title {
+    text-transform: capitalize;
     padding-top: 5px;
     margin-left: 10px;
     flex: 1;
@@ -119,11 +121,14 @@ main {
 }
 
 .task__name {
+    text-transform: capitalize;
     min-width: 100px;
     font-size: 1.1em;
     padding-top: 4px;
-    margin: 0 10px;
+    padding: 3px 10px;
     flex: 1;
+    border-left: 1px var(--fourth-color) solid;
+    border-right: 1px var(--fourth-color) solid;
 }
 
 .btn {
@@ -160,17 +165,8 @@ main {
     transition: all, ease, 100ms;
 }
 
-.task-add__button:hover {
+.task-add__btn:hover {
     transform: scale(1.05);
-}
-
-.icon-separator {
-    height: 25px;
-    width: 1px;
-}
-
-.task__separator {
-    background-color: var(--fourth-color);
 }
 
 .todo__header-btn-edit,
@@ -190,6 +186,7 @@ main {
 }
 
 .task__btn-checkbox,
+.task__btn-checkbox--done,
 .task__btn-up,
 .task__btn-down,
 .task__btn-edit,
@@ -199,9 +196,18 @@ main {
     margin: 0px 3px;
 }
 
+.task__btn-checkbox--done,
+.task__btn-checkbox {
+    margin-right: 10px;
+}
+
 .task__btn-checkbox {
     margin-right: 10px;
     background-image: url("../img/unchecked-black.png");
+}
+
+.task__btn-checkbox--done {
+    background-image: url("../img/checked-black.png");
 }
 
 .task__btn-up {
@@ -219,4 +225,14 @@ main {
 
 .task__btn-close {
     background-image: url("../img/close-black.png");
+}
+
+.hidden {
+    display: none;
+}
+
+.strike {
+    text-decoration: line-through;
+    text-decoration-color: var(--strike-font-color);
+    text-decoration-thickness: 2px;
 }
