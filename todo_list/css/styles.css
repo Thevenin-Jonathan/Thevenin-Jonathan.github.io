@@ -142,6 +142,7 @@ main {
     padding-top: 4px;
     padding: 3px 10px;
     flex: 1;
+    overflow: hidden;
     border-left: 1px var(--fourth-color) solid;
     border-right: 1px var(--fourth-color) solid;
 }
