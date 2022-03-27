@@ -113,6 +113,10 @@ main {
     flex: 1;
 }
 
+.todo__header-title--edit::placeholder {
+    color: #bbb;
+}
+
 .todo__content {
     border-radius: 0 0 8px 8px;
     border: 1px #ddd solid;

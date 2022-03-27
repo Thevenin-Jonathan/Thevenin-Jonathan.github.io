@@ -2,6 +2,7 @@ const todos = [
     {
         title: "Todo 1",
         edit: false,
+        named: false,
         tasks: [
             {
                 done: false,
@@ -26,6 +27,7 @@ const createTodo = () => {
     todos.push({
         title: `Todo ${todos.length + 1}`,
         edit: false,
+        named: false,
         tasks: []
     });
 }
@@ -51,7 +53,8 @@ const createTodoElement = (todo, index) => {
     todoHeaderElement.classList.add("todo__header");
     const todoContentElement = document.createElement("div");
     todoContentElement.classList.add("todo__content");
-    const todoHeaderTitleElement = createHeaderTitleElement(todo);
+    const todoHeaderTitleElement =
+        todo.edit ? createHeaderInputElement(todo) : createHeaderTitleElement(todo);
     const headerEditBtnElement = createHeaderEditBtnElement(todo);
     const headerCloseBtnElement = createHeaderCloseBtnElement(index);
     todoHeaderElement.append(todoHeaderTitleElement, headerEditBtnElement, headerCloseBtnElement);
@@ -60,24 +63,29 @@ const createTodoElement = (todo, index) => {
     return todoElement;
 }
 
-const createHeaderTitleElement = (todo) => {    
-    if (todo.edit) {
-        const inputElement = document.createElement("input");
-        inputElement.classList.add("todo__header-title--edit", "focus");
-        inputElement.placeholder = "Enter name here";
-        inputElement.addEventListener("focusout", () => {
-            todo.edit = false;
-            todo.title = inputElement.value ? inputElement.value : todo.title;
-            displayTodos();
-        })        
-        return inputElement;
+const createHeaderInputElement = (todo) => {
+    const inputElement = document.createElement("input");
+    inputElement.classList.add("todo__header-title--edit");
+    inputElement.placeholder = "Enter name here";
+    setTimeout(() => {
+        inputElement.focus();
+    }, 0);
+    inputElement.addEventListener("focusout", () => {
+        todo.edit = false;
+        if (inputElement.value) {
+            todo.title = inputElement.value;
+            todo.named = true;
+        }
+        displayTodos();
+    })        
+    return inputElement;
+}
 
-    } else {
-        const titleElement = document.createElement("h2");
-        titleElement.classList.add("todo__header-title");
-        titleElement.innerText = todo.title;
-        return titleElement;
-    }
+const createHeaderTitleElement = (todo) => {
+    const titleElement = document.createElement("h2");
+    titleElement.classList.add("todo__header-title");
+    titleElement.innerText = todo.title;
+    return titleElement;
 }
 
 const createHeaderEditBtnElement = (todo) => {
@@ -86,7 +94,6 @@ const createHeaderEditBtnElement = (todo) => {
     editBtnElement.addEventListener("click", () => {
         todo.edit = true;
         displayTodos();
-        document.querySelector(".focus").focus();
     })
     return editBtnElement;
 }
@@ -132,7 +139,11 @@ const createAddTaskButton = (todo, todoIndex) => {
 
 const deleteTodo = (index) => {
     todos.splice(index, 1);
-    todos.forEach( (todo, index) => todo.title = `todo ${index + 1}`);
+    todos.forEach( (todo, index) => {
+        if (todo.named === false) {
+            todo.title = `todo ${index + 1}`
+        }
+    });
     displayTodos();
 }
 
