@@ -6,17 +6,17 @@ const todos = [
         tasks: [
             {
                 done: false,
-                text: "une tache",
+                text: "Task 1",
                 edit: false,
             },
             {
                 done: false,
-                text: "une tache",
+                text: "Task 2",
                 edit: false,
             },
             {
                 done: false,
-                text: "une tache",
+                text: "Task 3",
                 edit: false,
             }
         ],
@@ -71,14 +71,23 @@ const createHeaderInputElement = (todo) => {
         inputElement.focus();
     }, 0);
     inputElement.addEventListener("focusout", () => {
-        todo.edit = false;
-        if (inputElement.value) {
-            todo.title = inputElement.value;
-            todo.named = true;
+        closeHeaderEditMode(todo, inputElement);
+    })
+    document.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+            closeHeaderEditMode(todo, inputElement);
         }
-        displayTodos();
-    })        
+    }) 
     return inputElement;
+}
+
+const closeHeaderEditMode = (todo, inputElement) => {
+    todo.edit = false;
+    if (inputElement.value) {
+        todo.title = inputElement.value;
+        todo.named = true;
+    }
+    displayTodos();
 }
 
 const createHeaderTitleElement = (todo) => {
@@ -125,9 +134,10 @@ const createAddTaskButton = (todo, todoIndex) => {
     addBtnElement.classList.add("task-add__btn")
     addBtnElement.textContent = "Add task";
     addBtnElement.addEventListener("click", () => {
+        const name = todo.tasks.length + 1;
         const task = {
             done: false,
-            text: "une tache",
+            text: `Task ${name}`,
             edit: true,
         };
         todo.tasks.push(task);
@@ -152,8 +162,8 @@ const createTaskElement = (task, todoIndex, taskIndex) => {
     taskElement.classList.add("task");
     const taskBtnCheckboxElement = createTaskBtnCheckboxElement(task);
     const taskNameElement = createTaskNameElement(task);
-    const taskBtnUpElement = createTaskBtnUpElement();
-    const taskBtnDownElement = createTaskBtnDownElement();
+    const taskBtnUpElement = createTaskBtnUpElement(todoIndex, taskIndex);
+    const taskBtnDownElement = createTaskBtnDownElement(todoIndex, taskIndex);
     const taskBtnEditElement = createTaskBtnEditElement();
     const taskBtnCloseElement = createTaskBtnCloseElement(todoIndex, taskIndex);
     taskElement.append(
@@ -185,15 +195,30 @@ const createTaskNameElement = (task) => {
     return taskNameElement;
 }
 
-const createTaskBtnUpElement = () => {
+const createTaskBtnUpElement = (todoIndex, taskIndex) => {
     const upBtnElement = document.createElement("button");
     upBtnElement.classList.add("task__btn-up", "btn");
+    upBtnElement.addEventListener("click", () => {
+        if (taskIndex > 0) {
+            const tasks = todos[todoIndex].tasks;
+            [tasks[taskIndex], tasks[taskIndex - 1]] = [tasks[taskIndex - 1], tasks[taskIndex]]
+            displayTodos();
+        }
+    })
     return upBtnElement;    
 }
 
-const createTaskBtnDownElement = () => {
+const createTaskBtnDownElement = (todoIndex, taskIndex) => {
     const downBtnElement = document.createElement("button");
     downBtnElement.classList.add("task__btn-down", "btn");
+    downBtnElement.addEventListener("click", () => {
+        const max = todos[todoIndex].tasks.length - 1;
+        if (taskIndex < max) {
+            const tasks = todos[todoIndex].tasks;
+            [tasks[taskIndex + 1], tasks[taskIndex]] = [tasks[taskIndex], tasks[taskIndex + 1]]
+            displayTodos();
+        }
+    })
     return downBtnElement;    
 }
 
