@@ -1,27 +1,4 @@
-const todos = [
-    {
-        title: "Todo 1",
-        edit: false,
-        named: false,
-        tasks: [
-            {
-                done: false,
-                text: "Task 1",
-                edit: false,
-            },
-            {
-                done: false,
-                text: "Task 2",
-                edit: false,
-            },
-            {
-                done: false,
-                text: "Task 3",
-                edit: false,
-            }
-        ],
-    },
-]
+const todos = []
 
 const createTodo = () => {
     todos.push({
@@ -71,17 +48,17 @@ const createHeaderInputElement = (todo) => {
         inputElement.focus();
     }, 0);
     inputElement.addEventListener("focusout", () => {
-        closeHeaderEditMode(todo, inputElement);
+        updTitleAndCloseEditMode(todo, inputElement);
     })
     document.addEventListener("keyup", (event) => {
         if (event.key === "Enter") {
-            closeHeaderEditMode(todo, inputElement);
+            updTitleAndCloseEditMode(todo, inputElement);
         }
     }) 
     return inputElement;
 }
 
-const closeHeaderEditMode = (todo, inputElement) => {
+const updTitleAndCloseEditMode = (todo, inputElement) => {
     todo.edit = false;
     if (inputElement.value) {
         todo.title = inputElement.value;
@@ -134,10 +111,8 @@ const createAddTaskButton = (todo, todoIndex) => {
     addBtnElement.classList.add("task-add__btn")
     addBtnElement.textContent = "Add task";
     addBtnElement.addEventListener("click", () => {
-        const name = todo.tasks.length + 1;
         const task = {
             done: false,
-            text: `Task ${name}`,
             edit: true,
         };
         todo.tasks.push(task);
@@ -161,10 +136,11 @@ const createTaskElement = (task, todoIndex, taskIndex) => {
     const taskElement = document.createElement("li");
     taskElement.classList.add("task");
     const taskBtnCheckboxElement = createTaskBtnCheckboxElement(task);
-    const taskNameElement = createTaskNameElement(task);
+    const taskNameElement = 
+        task.edit ? createTaskInputElement(task, todoIndex, taskIndex) : createTaskNameElement(task);
     const taskBtnUpElement = createTaskBtnUpElement(todoIndex, taskIndex);
     const taskBtnDownElement = createTaskBtnDownElement(todoIndex, taskIndex);
-    const taskBtnEditElement = createTaskBtnEditElement();
+    const taskBtnEditElement = createTaskBtnEditElement(task);
     const taskBtnCloseElement = createTaskBtnCloseElement(todoIndex, taskIndex);
     taskElement.append(
         taskBtnCheckboxElement, taskNameElement, taskBtnUpElement,
@@ -185,6 +161,29 @@ const createTaskBtnCheckboxElement = (task) => {
         displayTodos();
     })
     return checkboxBtnElement;
+}
+
+const createTaskInputElement = (task, todoIndex, taskIndex) => {
+    const taskInputElement = document.createElement("input");
+    taskInputElement.classList.add("task__input");    
+    setTimeout(() => { taskInputElement.focus(); }, 0);
+    taskInputElement.addEventListener("focusout", () => {
+        updTaskNameAndCloseEditMode(task, todoIndex, taskIndex, taskInputElement);
+    })
+    document.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") updTaskNameAndCloseEditMode(task, todoIndex, taskIndex, taskInputElement);
+    })
+    return taskInputElement;
+}
+
+const updTaskNameAndCloseEditMode = (task, todoIndex, taskIndex, inputElement) => {
+    task.edit = false;
+    if (inputElement.value) {
+        task.text = setFirstLetterUppercase(inputElement.value);
+    } else if (!task.text) {
+        task.text = "Task";
+    }
+    displayTodos();
 }
 
 const createTaskNameElement = (task) => {
@@ -222,9 +221,13 @@ const createTaskBtnDownElement = (todoIndex, taskIndex) => {
     return downBtnElement;    
 }
 
-const createTaskBtnEditElement = () => {
+const createTaskBtnEditElement = (task) => {
     const editBtnElement = document.createElement("button");
     editBtnElement.classList.add("task__btn-edit", "btn");
+    editBtnElement.addEventListener("click", () => {
+        task.edit = true;
+        displayTodos();
+    })
     return editBtnElement;    
 }
 
@@ -236,6 +239,11 @@ const createTaskBtnCloseElement = (todoIndex, taskIndex) => {
         displayTodos();
     })
     return closeBtnElement;    
+}
+
+const setFirstLetterUppercase = (text) => {
+    const firstLetter = text[0].toUpperCase();
+    return firstLetter + text.slice(1);
 }
 
 displayTodos();

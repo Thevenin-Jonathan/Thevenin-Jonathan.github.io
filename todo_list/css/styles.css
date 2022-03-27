@@ -135,8 +135,8 @@ main {
     border-bottom: 1px var(--fourth-color) solid;
 }
 
+.task__input,
 .task__name {
-    text-transform: capitalize;
     min-width: 100px;
     font-size: 1.1em;
     padding-top: 4px;
@@ -144,6 +144,13 @@ main {
     flex: 1;
     border-left: 1px var(--fourth-color) solid;
     border-right: 1px var(--fourth-color) solid;
+}
+
+.task__input {
+    font-family: var(--main-font);
+    outline: none;
+    border-top: none;
+    border-bottom: none;
 }
 
 .btn {
